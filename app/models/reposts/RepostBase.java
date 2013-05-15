@@ -1,9 +1,3 @@
-/*
- * 作成日 2013/01/01 リポスト試作からの取り入れ
- * 修正日 2013/01/07 適応のための簡単な手直し
- * 修正日 2013/01/11 JPAマージヘルパ追加
- * 修正日 2013/01/19 検索メソッドの直し
- */
 package models.reposts;
 
 import java.lang.reflect.Field;
@@ -385,24 +379,6 @@ abstract public class RepostBase extends MySuperModel {
 		protected String signature;
 	}
 
-	// SQLにて使用
-//	private static String accountColName;
-//
-//	private static void setAccountColName() {
-//		Field[] fs = RepostBase.class.getFields();
-//		for (Field f : fs) {
-//			if (f.getType() == Account.class) {
-//				accountColName = f.getName();
-//			}
-//		}
-//	}
-//
-//	public static String getAccountColName() {
-//		if (accountColName == null) {
-//			setAccountColName();
-//		}
-//		return accountColName;
-//	}
 
 	// String accountColNameというフィールドがあるのに注意
 	private static ColNames accountColNames;
@@ -413,8 +389,6 @@ abstract public class RepostBase extends MySuperModel {
 			accountColNames.entity = CONTORIBUTOR_COL_NAME;
 			accountColNames.serialCode = getContributorUniqueColName();
 			accountColNames.signature = getContributorSignatureColName();
-//			Logger.debug("accountColNames.entity:"+accountColNames.entity);
-//			Logger.debug("accountColNames.siqnature:"+accountColNames.siqnature);
 		}
 	}
 
@@ -465,18 +439,6 @@ abstract public class RepostBase extends MySuperModel {
 		return null;
 	}
 
-//	private static void printSqlCnf(SqlCnf _cnf) {
-//		Logger.debug("name" + _cnf.name);
-//		Logger.debug("primaryArgsType         :" + _cnf.primaryArgsType);
-//		Logger.debug("fetchType        :" + _cnf.fetchType);
-//		Logger.debug("resultColName    :" + _cnf.resultColName);
-//		Logger.debug("instanceColName  :" + _cnf.primaryColNames.entity);
-//		Logger.debug("stringColName    :" + _cnf.primaryColNames.siqnature);
-//		Logger.debug("additionalSql:" + _cnf.additionalSql);
-//		Logger.debug("pairClassName    :" + _cnf.pairClassName);
-//		Logger.debug("withAccount      :" + _cnf.withAccount);
-//	}
-
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	/*
 	 * 《privateメソッド》
@@ -525,7 +487,6 @@ abstract public class RepostBase extends MySuperModel {
 			sb.append(" r ");
 		}
 
-//		boolean hasCondition = false;
 		String joint = "WHERE";
 
 		switch (_cnf.primaryArgsType) {
@@ -573,27 +534,6 @@ abstract public class RepostBase extends MySuperModel {
 			joint = "AND";
 		}
 
-//		// primaryArgsがない場合はsecondaryも無効
-//		if (_cnf.secondaryArgsType != null &&
-//				_cnf.secondaryArgsType != ArgsType.NULL &&
-//			_cnf.primaryArgsType != ArgsType.NULL) {
-//
-//			sb.append((hasCondition) ? "AND " : "WHERE ");
-//			sb.append(" r.");
-//
-//			if (_cnf.secondaryArgsType == ArgsType.ENTITY) {
-//				sb.append(_cnf.secondaryColNames.entity);
-//			}
-//			else {
-//				sb.append(_cnf.secondaryColNames.serialCode);
-//			}
-//			sb.append(" = :");
-//			sb.append(JPQL_BINDKEY_SECONDARY_ARGS);
-//			sb.append(" ");
-//
-//			hasCondition = true;
-//		}
-
 		// contributorは引数を単数のみとする。
 		// （複数のcontributor情報での検索はなし）
 		if (_cnf.contributorArgsType != null &&
@@ -611,10 +551,8 @@ abstract public class RepostBase extends MySuperModel {
 			sb.append(" = :");
 			sb.append(JPQL_BINDKEY_CONTRIBUTOR);
 			sb.append(" ");
-//			joint = "AND";
 		}
 
-//		sb.append("GROUP BY r.id ");
 
 		// デバッグプリント
 		System.out.println(
@@ -686,20 +624,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfForRepostedItem(
 			String _index, String _name,
 			ItemType _itemType, LabelType _labelType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.index = _index;
 		cnf.name = _name;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = _itemType.getLowerClassName();
 		cnf.primaryColNames.entity = _itemType.getLowerClassName();
@@ -758,20 +692,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfForRepostedLabel(
 			String _index, String _name,
 			LabelType _labelType, ItemType _itemType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = _labelType.getLowerClassName();
 		cnf.primaryColNames.entity = _labelType.getLowerClassName();
@@ -830,20 +760,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindItemByLabel(
 			String _index, String _name,
 			ItemType _itemType, LabelType _labelType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = _itemType.getLowerClassName();
 		cnf.primaryColNames.entity = _labelType.getLowerClassName();
@@ -901,20 +827,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindLabelByItem(
 			String _index, String _name,
 			LabelType _labelType, ItemType _itemType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = _labelType.getLowerClassName();
 		cnf.primaryColNames.entity = _itemType.getLowerClassName();
@@ -981,19 +903,15 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindItemByAccount(
 			String _index, String _name,
 			ItemType _itemType, LabelType _labelType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType) {
-//			ArgsType _secondaryArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = ArgsType.NULL;
 		cnf.resultColName = _itemType.getLowerClassName();
 		cnf.primaryColNames.entity = accountColNames.entity;
@@ -1061,10 +979,8 @@ abstract public class RepostBase extends MySuperModel {
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = ArgsType.NULL;
 		cnf.resultColName = _labelType.getLowerClassName();
 		cnf.primaryColNames.entity = accountColNames.entity;
@@ -1123,20 +1039,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindRepostByItem(
 			String _index, String _name,
 			ItemType _itemType, LabelType _labelType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = "";
 		cnf.primaryColNames.entity = _itemType.getLowerClassName();
@@ -1195,20 +1107,16 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindRepostByLabel(
 			String _index, String _name,
 			LabelType _labelType, ItemType _itemType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType,
-			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = _contributorArgsType;
 		cnf.resultColName = "";
 		cnf.primaryColNames.entity = _labelType.getLowerClassName();
@@ -1267,19 +1175,15 @@ abstract public class RepostBase extends MySuperModel {
 	private static SqlCnf createSqlCnfFindRepostByAccount(
 			String _index, String _name,
 			ItemType _itemType, LabelType _labelType,
-			// IRepostElementType _secondaryType,
 			boolean _isSingleArg,
 			ArgsType _primaryArgsType) {
-//			ArgsType _secondaryArgsType) {
 
 		SqlCnf cnf = new SqlCnf();
 
 		cnf.name = _name;
 		cnf.index = _index;
-//		cnf.secondaryType = _secondaryType;
 		cnf.isSingleArg = _isSingleArg;
 		cnf.primaryArgsType = _primaryArgsType;
-//		cnf.secondaryArgsType = _secondaryArgsType;
 		cnf.contributorArgsType = ArgsType.NULL;
 		cnf.resultColName = "";
 		cnf.primaryColNames.entity = accountColNames.entity;
@@ -1296,14 +1200,6 @@ abstract public class RepostBase extends MySuperModel {
 	private static String createSqlFindRepostByAccount(SqlCnf _cnf) {
 		return createSqlCore(_cnf);
 	}
-
-//	private static void printIndex(int _i, int _j, int _k, int _m) {
-//		System.out.print(_i + "." + _j + "." + _k + "." + _m + "@");
-//	}
-
-//	private static void printIndex(String _index) {
-//		System.out.print(_index + "@");
-//	}
 
 	private static String createSqlIndex(
 			int _sqlNumber, int _itm, int _lbl, int _sgl, int _prm, int _cntr) {
@@ -1702,38 +1598,6 @@ abstract public class RepostBase extends MySuperModel {
 
 								ibyaSqls.put(key,
 										new SqlData(key, index, name, sql));
-//								// -------------------------------------+
-//
-//								index = createSqlIndex(
-//										SQLNAME_REPOST_BY_ACCOUNT.number,
-//										itm, -1, sgl, prm, -1);
-//								name = SQLNAME_REPOST_BY_ACCOUNT.name;
-//								key = keyStr(
-//										SQLNAME_REPOST_BY_ACCOUNT.number,
-//										ItemType.values()[itm],
-//										null,
-//										isSingle,
-//										ArgsType.values()[prm],
-//										null
-//										);
-//
-////								Logger.debug("key:%s", key);
-//
-//								cnf = createSqlCnfFindRepostByAccount(
-//										index,
-//										name,
-//										ItemType.values()[itm],
-//										null,
-//										isSingle,
-//										ArgsType.values()[prm]
-//										);
-//								sql = createSqlFindRepostByAccount(cnf);
-//
-//								rbyaSqlCnf.put(key, cnf);
-//
-//								rbyaSqls.put(key, new SqlData(key, index,
-//										name,
-//										sql));
 							}
 						}
 					}
@@ -1834,37 +1698,6 @@ abstract public class RepostBase extends MySuperModel {
 								lbyaSqls.put(key,
 										new SqlData(key, index, name, sql));
 
-//								// -------------------------------------+
-//								index = createSqlIndex(
-//										SQLNAME_REPOST_BY_ACCOUNT.number,
-//										-1, lbl, sgl, prm, -1);
-//								name = SQLNAME_REPOST_BY_ACCOUNT.name;
-//								key = keyStr(
-//										SQLNAME_REPOST_BY_ACCOUNT.number,
-//										null,
-//										LabelType.values()[lbl],
-//										isSingle,
-//										ArgsType.values()[prm],
-//										null
-//										);
-//
-////								Logger.debug("key:%s", key);
-//
-//								cnf = createSqlCnfFindRepostByAccount(
-//										index,
-//										name,
-//										null,
-//										LabelType.values()[lbl],
-//										isSingle,
-//										ArgsType.values()[prm]
-//										);
-//								sql = createSqlFindRepostByAccount(cnf);
-//
-//								rbyaSqlCnf.put(key, cnf);
-//
-//								rbyaSqls.put(key, new SqlData(key, index,
-//										name,
-//										sql));
 							}
 						}
 					}
@@ -1891,8 +1724,6 @@ abstract public class RepostBase extends MySuperModel {
 							ArgsType.values()[prm],
 							null
 							);
-
-//					Logger.debug("key:%s", key);
 
 					cnf = createSqlCnfFindRepostByAccount(
 							index,
@@ -1945,18 +1776,6 @@ abstract public class RepostBase extends MySuperModel {
 			ArgsType _primaryArgsType,
 			// ArgsType _secondaryArgsType,
 			ArgsType _contributorArgsType) {
-
-//		if (!(_type1 instanceof ItemType) &&
-//				!(_type1 instanceof LabelType)) {
-//			throw new IllegalArgumentException();
-//		}
-//		if (!(_type2 instanceof ItemType) &&
-//				!(_type2 instanceof LabelType)) {
-//			throw new IllegalArgumentException();
-//		}
-//		if (_type1.getClass() == _type2.getClass()) {
-//			throw new IllegalArgumentException();
-//		}
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(_sqlNumber);
@@ -2026,29 +1845,6 @@ abstract public class RepostBase extends MySuperModel {
 			return this.sql;
 		}
 
-//		private static String repostedAtColName() {
-//			return REPOSTED_AT_COL_NAME;
-//		}
-//
-//		private static String contributorIdColName() {
-//			return CONTORIBUTOR_COL_NAME + ".id";
-//		}
-//
-//		private static String contributorNameColName() {
-//			return getContributorSignatureColName();
-//		}
-//
-//		private static String labelIdColName() {
-//			return LABEL_COL_NAME + ".id";
-//		}
-//
-//		private static String labelSerialCodeColName() {
-//			return LabelBase.SERIAL_CODE_COL_NAME;
-//		}
-//
-//		private static String labelDisplayNameColName() {
-//			return LabelBase.DISPLAY_NAME_COL_NAME;
-//		}
 	}
 
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
@@ -2149,18 +1945,6 @@ abstract public class RepostBase extends MySuperModel {
 			return this;
 		}
 
-//		public FindCondition secondary(
-//		Object _secondary
-//		) throws IllegalArgumentException {
-//
-//	if (!(_secondary instanceof String) &&
-//			!(_secondary instanceof MySuperModel)) {
-//		throw new IllegalArgumentException();
-//	}
-//
-//	this.secondary = _secondary;
-//	return this;
-//}
 
 		public FindCondition orderBy(IOrderBy _orderBy) {
 			this.orderBy = _orderBy;
@@ -2235,9 +2019,7 @@ abstract public class RepostBase extends MySuperModel {
 		if (isNotBlank(_sqlData.orderBySql)) {
 			_sqlData.sql += _sqlData.orderBySql;
 		}
-//		System.out.println(_sqlData.sql);
 		_sqlData.printSql();
-//		throw new IllegalArgumentException();// Exception
 
 		boolean hasPrimary = _primaryArgsType.isNotNull();
 		boolean hasContributor = _contributorArgsType.isNotNull();

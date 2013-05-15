@@ -1,10 +1,3 @@
-/*
- * 作成日 2012/04/09
- * 修正日 2012/04/13 entryDate, stateの削除
- * 修正日 2012/04/24 toString,toMap,toJsonの削除、@Hide導入
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2013/01/11 JPAマージヘルパ追加
- */
 package models.items;
 
 import javax.persistence.Entity;

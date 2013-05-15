@@ -1,6 +1,3 @@
-/**
- *
- */
 package utils;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -10,8 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import com.ibm.icu.text.Transliterator;
 
 /**
- * @author kez
- *
+ * 文字列のユーティリティー.
+ * @author H.Kezuka
  */
 public class MyStringUtils {
 
@@ -64,9 +61,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isHankaku(char _c) {
-		// Logger.debug("isHankaku");//★
-		// Logger.debug("String.valueOf(_c).getBytes().length:" +
-// String.valueOf(_c).getBytes().length);
 		return String.valueOf(_c).getBytes().length < 2;
 	}
 
@@ -79,7 +73,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isZenkaku(char _c) {
-		// Logger.debug("isZenkaku");//★
 		return !isHankaku(_c);
 	}
 
@@ -92,7 +85,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isHiragana(char _c) {
-		// Logger.debug("isHiragana");//★
 		return ('\u3040' <= _c && _c <= '\u309F');
 	}
 
@@ -105,7 +97,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isKatakana(char _c) {
-		// Logger.debug("isKatakana");//★
 		return ('\u30A0' <= _c && _c <= '\u30FF');
 	}
 
@@ -118,7 +109,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isHanKatakana(char _c) {
-		// Logger.debug("isHanKatakana");//★
 		return ('\uFF61' <= _c && _c <= '\uFF9F');
 	}
 
@@ -131,7 +121,6 @@ public class MyStringUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean isKanji(char _c) {
-		// Logger.debug("isKanji");//★
 		return ('\u4E00' <= _c && _c <= '\u9FCF');
 	}
 

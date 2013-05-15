@@ -1,7 +1,3 @@
-/*
- * 作成日 2012/09/22
- * 修正日 2013/01/07 リポスト組み込みに合わせた改造への最適化
- */
 package models.items;
 
 import java.util.Locale;
@@ -55,12 +51,6 @@ public class ItemCoreTest extends UnitTestBase {
 		assertEquals("enteredAt:",
 				_actual.getEnteredAt(), _expected.getEnteredAt());// Date
 		assertEquals("state:", _actual.state, _expected.state);// ItemStateType
-		// -------------------------------------+
-//		assertEquals("labels:",
-//		_actual.labels, _expected.labels);// List<User>
-//assertEquals("categories:",
-//		_actual.categories, _expected.categories);// Set<Category>
-//assertEquals("tags:", _actual.tags, _expected.tags);// Set<Tag>
 
 	}
 
@@ -85,14 +75,9 @@ public class ItemCoreTest extends UnitTestBase {
 				// -------------------------------------+
 				// コア
 				.itemId(tm.getItemId(0, 0))// ItemId
-				// .serialCode()//String
 				.createdAt(TestModels.date1())// Date
 				.enteredAt(TestModels.date1())// Date
 				.state(ItemStateType.OK)// ItemStateType
-				// -------------------------------------+
-//				.labels(ItemTestModels.getUserList01())// List<User>
-//				.categories(null)// Set<Category>
-//				.tags(null)// Set<Tag>
 				// -------------------------------------+
 				// ビルド用
 				.build();

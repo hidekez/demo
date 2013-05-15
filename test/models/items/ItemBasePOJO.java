@@ -1,9 +1,3 @@
-/*
- * 作成日 2012/09/23
- * 修正日 2013/01/07 リポスト組み込みに合わせた改造への最適化
- * 修正日 2013/01/09 ItemSimpleEntity -> ItemBasePOJO
- * 修正日 2013/01/22 uid -> serialColde
- */
 package models.items;
 
 import java.util.Date;

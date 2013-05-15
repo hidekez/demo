@@ -1,7 +1,3 @@
-/*
- * 作成日 2012/09/22
- * 修正日 2013/01/07 リポスト組み込みに合わせた改造への最適化
- */
 package models.items;
 
 import java.util.Date;
@@ -54,12 +50,6 @@ public class ItemCore extends ItemBase {
 			setItemId(_val);
 			return this;
 		}
-
-//		@Override
-//		public Builder uid(String _val) {
-//			this.uid = _val;
-//			return this;
-//		}
 
 		@Override
 		public Builder createdAt(Date _val) {

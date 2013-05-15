@@ -1,8 +1,3 @@
-/*
- * 作成日 2013/02/06
- * 修正日
- */
-
 package utils;
 
 import java.io.BufferedWriter;
@@ -36,8 +31,6 @@ public class JSGenerator {
 
 				file.delete();
 				file.createNewFile();
-//				System.out.println("Can not write into file.");
-//				return;
 			}
 
 			PrintWriter pw =
@@ -58,11 +51,7 @@ public class JSGenerator {
 		List<Category> cats = Category.findAll();
 		Gson gson = new Gson();
 		StringBuilder sb = new StringBuilder();
-//		sb.append("(function() {");
-//		sb.append("MYMY.data.label.category.preset.json = ");
 		sb.append(gson.toJson(cats));
-//		sb.append(";");
-//		sb.append("})();");
 		return sb.toString();
 	}
 

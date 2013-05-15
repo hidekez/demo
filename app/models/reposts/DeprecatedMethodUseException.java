@@ -1,8 +1,3 @@
-/*
- * 作成日 2013/01/24
- * 修正日
- */
-
 package models.reposts;
 
 /**

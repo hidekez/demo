@@ -1,20 +1,9 @@
-/* ************************************************************ */
-// Tools.java  <Utility>
-/* ************************************************************ */
 /**
- * ユーティリティツール
+ * ユーティリティツール.
  * ちょっとした処理の共有化用クラス
  *
  * @author H.Kezuka
- * 作成日 2012/02/24
- * 修正日 2012/04/06 static化など
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2012/06/27 日本語変換追加
  */
-/* ************************************************************ */
-/*++++++++++++++++++++++++++*+++++++++++++++++++++++++*/
-//=============================================*
-//-------------------------------------+
 
 package utils;
 
@@ -140,79 +129,8 @@ public final class Tools {
 	 */
 	/* ************************************************************ */
 	// apache.commons.lang3.time.StopWatchを使うことにした
-//	public static class StopWatch {
-//		private long start;
-//		private long stop;
-//		//=============================================*
-//		public StopWatch(long _start){
-//			this.start = _start;
-//		}
-//		//=============================================*
-//		public long getStart() {
-//			return this.start;
-//		}
-//		public void setStart(long _start) {
-//			this.start = _start;
-//		}
-//		public long getStop() {
-//			return this.stop;
-//		}
-//		public void setStop(long _stop) {
-//			this.stop = _stop;
-//		}
-//		//=============================================*
-//		public long getPastTime(){
-//			if(stop <= start){
-//				return 0L;
-//			}
-//			return stop - start;
-//		}
-//		public long getPastTime(long _stop){
-//			this.stop = _stop;
-//			return getPastTime();
-//		}
-//		//=============================================*
-//		public void start(){
-//			this.start = System.currentTimeMillis();
-//		}
-//		public void stop(){
-//			this.start = System.currentTimeMillis();
-//		}
-//
-//	}
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-	//public static double
-
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/*
-//	 * 数値を文字列へ
-//	 * http://d.hatena.ne.jp/tilfin/20100622/1277176778
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static String toBase62String(final long value) {
-//	    long val = value;
-//
-//	    StringBuilder sb = new StringBuilder(7);
-//	    while (val > 0) {
-//	        int mod = (int)(val % 62);
-//	        if (mod < 10) {
-//	            // 数字
-//	            sb.append(mod);
-//	        } else if (mod < 36) {
-//	            // 英小文字 a = 97
-//	            // mod = mod - 10 + 97
-//	            mod += 87;
-//	            sb.append((char)mod);
-//	        } else {
-//	            // 英大文字 A = 65
-//	            // mod = mod - 36 + 65
-//	            mod += 29;
-//	            sb.append((char)mod);
-//	        }
-//	        val = val / 62;
-//	    }
-//
-//	    return new String(sb.reverse());
-//	}
-
 }
+/* ************************************************************ */
+/*++++++++++++++++++++++++++*+++++++++++++++++++++++++*/
+//=============================================*
+//-------------------------------------+

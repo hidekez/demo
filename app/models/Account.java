@@ -1,12 +1,3 @@
-/*
- * 作成日 2012/04/12
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2012/10/23 Account -> MasterUser
- * 修正日 2013/01/01 MasterUser -> Account
- * 修正日 2013/01/01 リポスト試作からの取り入れ
- * 修正日 2013/01/11 JPAマージヘルパ追加
- */
-
 package models;
 
 import java.lang.reflect.Field;
@@ -47,20 +38,6 @@ public class Account extends MySuperModel {
 	// =============================================*
 	// コア
 	// =============================================*
-//	/**
-//	 * アカウントユーザーセット.
-//	 * <ユーザー、所持者同一性認証フラグ>
-//	 */
-//	@Required
-//	@ElementCollection
-//	public Map<User, Boolean> users;
-//
-//	/**
-//	 * カレントユーザー.
-//	 */
-//	@Transient
-//	public User currentUser;
-
 	/**
 	 * ログインユーザー.
 	 */
@@ -97,23 +74,6 @@ public class Account extends MySuperModel {
 	@Basic(optional = false)
 	@Enumerated(EnumType.STRING)
 	public LifeStateType life = LifeStateType.ALIVE;
-
-//	// =============================================*
-//	// 数値
-//	// =============================================*
-//	/**
-//	 * ユーザー数.
-//	 * マルチアカウントとして登録されているユーザー数 users.sizeに等しい。
-//	 */
-//	@Transient
-//	public int userSize;
-//
-//	/**
-//	 * 訪問総数.
-//	 * マルチアカウントとして登録されているユーザーの、全訪問回数合計。
-//	 */
-//	@Transient
-//	public int wholeVisitCount;
 
 	// =============================================*
 	// 双方向リレーション
@@ -339,85 +299,6 @@ public class Account extends MySuperModel {
 		this.setVisitedAt();
 	}
 
-
-	/* ************************************************************ */
-
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 利用状況のチェック ( void method )
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static void checkAndSetupStatus() {
-//		List<MasterUser> masters = MasterUser.findAll();
-//		for (MasterUser masterUser : masters) {
-//			List<User> users = User.find("byAccount", masterUser)
-//					.fetch();
-//			// List<RepostUser> users = RepostUser.find(
-//			// "SELECT ru FROM RepostUser ru WHERE ru.xAccount.id =?",
-//			// account.id ).fetch();
-//
-//			masterUser.life = (users.size() > 0)
-//					? LifeStateType.ALIVE
-//					: LifeStateType.DEAD;
-//			masterUser.save();
-//			Logger.debug("account.id:" + masterUser.id);
-//			Logger.debug("users.size:" + users.size());
-//		}
-//	}
-
-	/* ************************************************************ */
-
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * アカウントユーザー 重複チェックしてリストに追加 コア処理
-//	 *
-//	 * @param _user
-//	 *            アカウントユーザー（オブジェクト）
-//	 * @return 追加されたか否か
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public boolean addUserCore(User _user) {
-//		Logger.debug(">>ItemBase.addUserCommonCore");
-//		if (_user == null)
-//			return false;
-//		// if (!this.users.contains(_user)) {
-//		try {
-//			this.users.put(_user);
-//			return true;
-//		}
-//		catch (Exception e) {
-//			// expression★
-//			return false;
-//			// } finally {
-//			// expression
-//		}
-//		// }
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * アカウントユーザー 検索してリストに追加 ListがNullの場合はNewする
-//	 *
-//	 * @param _user
-//	 *            アカウントユーザー（オブジェクト）
-//	 * @return 追加されたか否か
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public boolean findAndAddUser(User _user) {
-//		Logger.debug(">>ItemBase.findAndAddUserCommon");
-//		if (_user == null)
-//			return false;
-//		User user = User.findOrCreateAndSave(_user);// Validate含む
-//		if (user == null)
-//			return false;
-//		// fieldの初期化
-//		if (this.users == null) {
-//			this.users = new HashMap<User>();
-//		}
-//		return addUserCore(_user);// Validate含まない
-//	}
-
-	/* ************************************************************ */
 
 }
 /* ************************************************************ */

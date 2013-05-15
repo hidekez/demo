@@ -1,10 +1,3 @@
-/*
- * 作成日 2011/11/21
- * 修正日 2012/02/23 命名ルールの変更による
- * 修正日 2012/04/10 構造変更による
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- */
-
 package controllers;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -234,14 +227,8 @@ public class TwitterAction extends MyController {
 
 			if (account.loginUser.accessToken == null) {
 				Logger.warn("account.loginUser.accessToken == null");
-				//                account.loginUser.accessToken = new TwitterAccessToken();
-				//                account.loginUser.accessToken.accessKey = token.getToken();
-				//                account.loginUser.accessToken.accessKeySecret = token.getTokenSecret();
 			}
 			else {
-				//                account.accessToken = new AccessToken(
-				//                        account.loginUser.accessToken.accessKey,
-				//                        account.loginUser.accessToken.accessKeySecret);
 				account.copyAccessTokenFromUser();
 			}
 

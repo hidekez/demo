@@ -1,15 +1,3 @@
-/*
- * 作成日 2012/04/06
- * 修正日 2012/04/24 toString,toMap,toJsonの削除、@Hide導入
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2012/09/07 tagsの追加
- * 修正日 2012/09/10 ItemBase -> AbstractItem
- * 修正日 2013/01/01 AbstractItem -> ItemBase
- * 修正日 2013/01/01 リポスト試作からの取り入れ
- * 修正日 2013/01/11 JPAマージヘルパ追加
- * 修正日 2013/01/22 UID -> serialCode
- * 修正日 2013/01/22 検索関連でクラス・フィールド情報ヘルパ整理
- */
 package models.items;
 
 import java.util.Date;
@@ -168,15 +156,6 @@ abstract public class ItemBase extends MySuperModel
 	protected ItemBase() {
 	}
 
-	// Builderを通して生成すること
-//	public ItemBase(ItemId _itemId) {
-//		// コア
-//		this.itemId = _itemId;
-//		this.createdAt = MyDateUtils.now();
-//		this.enteredAt = MyDateUtils.now();
-//		this.serialCode = createSerialCode();
-//	}
-
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	/**
 	 * コンストラクタ（ビルダー版）.
@@ -238,10 +217,6 @@ abstract public class ItemBase extends MySuperModel
 		protected void setItemId(ItemId _val) {
 			this.itemId = _val;
 		}
-
-//		protected void setUid(String _val) {
-//			this.serialCode = _val;
-//		}
 
 		protected void setCreatedAt(Date _val) {
 			this.createdAt = _val;
@@ -466,9 +441,6 @@ abstract public class ItemBase extends MySuperModel
 		Logger.debug(">>ItemBase.checkSubsPersistent");
 
 		if (this.itemId == null) {
-//			|| this.contributors == null
-//				|| this.categories == null) {
-
 			return false;
 		}
 
@@ -476,13 +448,6 @@ abstract public class ItemBase extends MySuperModel
 		if (!checkPersistent(this.itemId)) {
 			return false;
 		}
-
-		// categories
-//		for (Category ctg : this.categories) {
-//			if (!checkPersistent(ctg)) {
-//				return false;
-//			}
-//		}
 
 		return true;
 	}
@@ -512,13 +477,11 @@ abstract public class ItemBase extends MySuperModel
 				"SELECT r.user FROM RepostUserTag r "
 						+ "WHERE r.tag.name = 'Red' "// TODO 引数の適用
 		).fetch();
-//		Logger.debug("users.size:" + users.size());
 
 		List<Tweet> tweets = RepostTweetTag.find(
 				"SELECT r.tweet FROM RepostTweetTag r "
 						+ "WHERE r.tag.name = 'Red' "
 				).fetch();
-//		Logger.debug("tweets.size:" + tweets.size());
 
 		// -------------------
 		List<ItemBase> items = new ArrayList<ItemBase>();

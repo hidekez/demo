@@ -1,7 +1,3 @@
-/*
- * 作成日 2013/01/01 リポスト試作からの取り入れ
- * 修正日 2013/01/07 適応のための簡単な手直し
- */
 package models.reposts;
 
 import java.util.Date;

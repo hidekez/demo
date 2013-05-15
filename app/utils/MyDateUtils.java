@@ -1,10 +1,3 @@
-/*
- * 作成日 2011/10/17
- * 修正日 2012/02/23 命名ルールの変更による
- * 修正日 2012/04/06 static化
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- */
-
 package utils;
 
 //import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -79,9 +72,6 @@ public final class MyDateUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static Date now() {
-		// return new Date(System.currentTimeMillis());
-		// return Calendar.getInstance().getTime();
-		// return new Date();
 		return new DateTime().toDate();
 	}
 
@@ -97,7 +87,6 @@ public final class MyDateUtils {
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static Date safeCopy(Date _date) {
-		// return new Date(_date.getTime());
 		return new DateTime(_date.getTime()).toDate();
 	}
 
@@ -212,52 +201,6 @@ public final class MyDateUtils {
 
 	/* ************************************************************ */
 
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * Dateインデックス用.
-//	 *
-//	 * @param _now
-//	 *            現在の日付
-//	 * @return 日付インデックス値(int) 引数が不正な場合は INDEX_MIN。
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	@Deprecated
-//	public static int get(Date _now) {
-//		if (_now == null) {
-//			return ERROR;
-//		}
-//		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN_DATETIME);
-//		Date base = new Date();
-//		try {
-//			base = sdf.parse(BEGINNING_YMDT);
-//		}
-//		catch (ParseException e) {}
-//		int def = (int) ((_now.getTime() - base.getTime()) / 1000);
-//		return (INDEX_MIN < def) ? def : INDEX_MIN;
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * DATE_YMDインデックス用.
-//	 *
-//	 * @param _now
-//	 *            現在の日付
-//	 * @return 日付YMD型インデックス値(int)
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	@Deprecated
-//	public static int getYMD(Date _now) {
-//		if (_now != null) {
-//			SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN_YMD);
-//			Date now = Tools.getSafetyDate(_now);// 防御的コピー
-//			try {
-//				return (int) Integer.parseInt(sdf.format(now));
-//			}
-//			catch (Exception e) {}
-//		}
-//		return ERROR;// _now != null、もしくはエラー時
-//	}
-
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	/**
 	 * Dateからint値作成.
@@ -350,8 +293,6 @@ public final class MyDateUtils {
 												throws ParseException,
 												NullPointerException,
 												IllegalArgumentException {
-		// return SDF_DT.parse(_str);
-		// return DateUtils.parseDate(_str, ALL_PATTERNS);
 		return toDate(_str);
 	}
 
@@ -368,7 +309,6 @@ public final class MyDateUtils {
 	public static Date noCheckedParse(String _str) {
 		Date date = null;
 		try {
-			// date = SDF_DT.parse(_str);
 			date = parseCore(_str);
 		}
 		catch (Exception e) {
@@ -395,7 +335,6 @@ public final class MyDateUtils {
 													throws ParseException,
 													IllegalArgumentException,
 													OutOfSpecificDateRange {
-		// Date date = SDF_DT.parse(_str);
 		Date date = parseCore(_str);
 		if (valid(date) == false) {
 			throw new OutOfSpecificDateRange();
@@ -526,132 +465,3 @@ public final class MyDateUtils {
 /* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 //=============================================*
 //-------------------------------------+
-//public static final int NETLIMIT_YEAR = 1990;
-//public static final int BEGINNING_YEAR = 2005;
-//public static final int BEGINNING_MONTH = 1;
-//public static final int BEGINNING_DAY = 1;
-//public static final int BEGINNING_HOUR = 0;
-//public static final int BEGINNING_MINUTE = 0;
-//public static final int BEGINNING_SECOND = 0;
-// -------------------------------------+
-//public static final String BEGINNING_YMD = "2005-01-01";
-//public static final String BEGINNING_YMDT = "2005-01-01T00:00:00";//Date'T'Time
-//public static final String THIS_SERVICE_BEGINNING_YMD = "2011-10-01";// Validation
-//public static final String THIS_SERVICE_BEGINNING_YMDT = "2011-10-01T00:00:00";//Date'T'Time
-// -------------------------------------+
-//public static final String DATE_PATTERN = "yyyy-MM-dd";
-//public static final String DATE_PATTERN_DATETIME = "yyyy-MM-dd HH:mm:ss.S";
-//public static final String DATE_PATTERN_YMD = "yyyyMMdd";
-// -------------------------------------+
-//public static final String[] ISO_PATTERNS = new String[6];
-//public static final List<String> PATTERNS = new ArrayList<>();
-//public static final String[] ALL_PATTERNS;
-// -------------------------------------+
-//public static final SimpleDateFormat SDF_DT = new SimpleDateFormat(
-//		DATE_PATTERN);
-//public static final SimpleDateFormat SDF_DTTM = new SimpleDateFormat(
-//		DATE_PATTERN_DATETIME);
-//public static final SimpleDateFormat SDF_YMD = new SimpleDateFormat(
-//		DATE_PATTERN_YMD);
-//// -------------------------------------+
-//private static final Date DATE_OF_BEGINNING_YMD;
-//private static final Date DATE_OF_BEGINNING_YMDT;
-//private static final Date DATE_OF_THIS_SERVICE_BEGINNING_YMD;
-//private static final Date DATE_OF_THIS_SERVICE_BEGINNING_YMDT;
-
-//// yyyy-MM-dd
-//ISO_PATTERNS[0] = DateFormatUtils.ISO_DATE_FORMAT.getPattern();
-//// yyyy-MM-ddZZ
-//ISO_PATTERNS[1] = DateFormatUtils.ISO_DATE_TIME_ZONE_FORMAT
-//		.getPattern();
-//// yyyy-MM-dd'T'HH:mm:ss
-//ISO_PATTERNS[2] = DateFormatUtils.ISO_DATETIME_FORMAT.getPattern();
-//// yyyy-MM-dd'T'HH:mm:ssZZ
-//ISO_PATTERNS[3] = DateFormatUtils.ISO_DATETIME_TIME_ZONE_FORMAT
-//		.getPattern();
-//ISO_PATTERNS[4] = "yyyy-MM-dd\'T\'HH:mm:ss.S";
-//ISO_PATTERNS[5] = "yyyy-MM-dd\'T\'HH:mm:ss.SZZ";
-//// -------------------------------------+
-//for (String str : ISO_PATTERNS) {
-//	PATTERNS.add(str);
-//	PATTERNS.add(str.replaceAll("-", "_"));
-//	PATTERNS.add(str.replaceAll("-", "/"));
-//	PATTERNS.add(str.replaceAll("-", "."));
-//	PATTERNS.add(str.replaceAll("-", ","));
-//	PATTERNS.add(str.replaceAll("-", " "));
-//}
-//// ALL_PATTERNS = (String[])(PATTERNS.toArray(new String[0]));
-//ALL_PATTERNS = PATTERNS.toArray(new String[0]);
-//// -------------------------------------+
-//DATE_OF_BEGINNING_YMD = noCheckedParse(BEGINNING_YMD);
-//DATE_OF_BEGINNING_YMDT = noCheckedParse(BEGINNING_YMDT);
-//DATE_OF_THIS_SERVICE_BEGINNING_YMD = noCheckedParse(THIS_SERVICE_BEGINNING_YMD);
-//DATE_OF_THIS_SERVICE_BEGINNING_YMDT = noCheckedParse(THIS_SERVICE_BEGINNING_YMDT);
-
-//INDEX_MIN = truncate(noCheckedParse(BEGINNING_YMD));
-
-//String s = DateFormatUtils.ISO_DATE_FORMAT.getPattern();
-
-///* ************************************************************ */
-///*
-// * ゲッター
-// */
-//public static final Date getDateOfBeginningYMD() {
-//	return safeCopy(DATE_OF_BEGINNING_YMD);
-//}
-//
-//public static final Date getDateOfBeginningYMDT() {
-//	return safeCopy(DATE_OF_BEGINNING_YMDT);
-//}
-//
-//public static final Date getDateOfThisServiceBeginningYMD() {
-//	return safeCopy(DATE_OF_THIS_SERVICE_BEGINNING_YMD);
-//}
-//
-//public static final Date getDateOfThisServiceBeginningYMDT() {
-//	return safeCopy(DATE_OF_THIS_SERVICE_BEGINNING_YMDT);
-//}
-
-//System.out.println("NETLIMIT_YEAR:" + NETLIMIT_YEAR);
-//// -------------------------------------+
-//System.out.println("BEGINNING_YEAR:" + BEGINNING_YEAR);
-//System.out.println("BEGINNING_MONTH:" + BEGINNING_MONTH);
-//System.out.println("BEGINNING_DAY:" + BEGINNING_DAY);
-//System.out.println("BEGINNING_YMD:" + BEGINNING_YMD);
-//System.out.println("BEGINNING_YMDT:" + BEGINNING_YMDT);
-//System.out.println("THIS_SERVICE_BEGINNING_YMD:"
-//		+ THIS_SERVICE_BEGINNING_YMD);
-//System.out.println("THIS_SERVICE_BEGINNING_YMDT:"
-//		+ THIS_SERVICE_BEGINNING_YMDT);
-//// -------------------------------------+
-////System.out.println(DATE_PATTERN);
-////System.out.println(DATE_PATTERN_DATETIME);
-//System.out.println("DATE_PATTERN_YMD:" + DATE_PATTERN_YMD);
-
-//// -------------------------------------+
-//for (String str : ISO_PATTERNS) {
-//	System.out.println("ISO_PATTERNS:" + str);
-//}
-//// -------------------------------------+
-//for (String str : PATTERNS) {
-//	System.out.println("PATTERNS:" + str);
-//}
-// -------------------------------------+
-//System.out.println("DATE_OF_BEGINNING_YMD:" + DATE_OF_BEGINNING_YMD);
-//System.out.println("DATE_OF_BEGINNING_YMDT:" + DATE_OF_BEGINNING_YMDT);
-//System.out.println("DATE_OF_THIS_SERVICE_BEGINNING_YMD:"
-//		+ DATE_OF_THIS_SERVICE_BEGINNING_YMD);
-//System.out.println("DATE_OF_THIS_SERVICE_BEGINNING_YMDT:"
-//		+ DATE_OF_THIS_SERVICE_BEGINNING_YMDT);
-//System.out.println("DATE_OF_BEGINNING_YMD:" + getDateOfBeginningYMD());
-//System.out.println("DATE_OF_BEGINNING_YMDT:" + getDateOfBeginningYMDT());
-//System.out.println("DATE_OF_THIS_SERVICE_BEGINNING_YMD:" + getDateOfThisServiceBeginningYMD());
-//System.out.println("DATE_OF_THIS_SERVICE_BEGINNING_YMDT:" + getDateOfThisServiceBeginningYMDT());
-
-//System.out.println(THIS_SERVICE_BEGINNING_YMD);
-//System.out.println(noCheckedParse(THIS_SERVICE_BEGINNING_YMD));
-//System.out.println(THIS_SERVICE_BEGINNING_YMDT);
-//System.out.println(noCheckedParse(THIS_SERVICE_BEGINNING_YMDT));
-//String str = "2011-10-01T12:34:56";
-//System.out.println(str);
-//System.out.println(noCheckedParse(str));

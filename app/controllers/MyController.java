@@ -1,8 +1,3 @@
-/*
- * 作成日 2012/03/16
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- */
-
 package controllers;
 
 import java.util.Date;
@@ -98,13 +93,6 @@ public class MyController extends Controller {
 	public static final String LOGIN_STATUS_PREFIX = "lgin";
 
 	// (flash)ログインフラグ
-//	protected static boolean isLogin() {
-//		return toBoolean(flash.get(LOGIN_STATUS_PREFIX));
-//	}
-//
-//	protected static void setLogin(boolean _isLogin) {
-//        flash.put(LOGIN_STATUS_PREFIX, _isLogin);
-//	}
     protected static boolean isLogin(String _sessionId) {
         return toBoolean(session.get(LOGIN_STATUS_PREFIX + _sessionId));
     }
@@ -199,18 +187,6 @@ public class MyController extends Controller {
 
 	// =============================================*
 //	// (cache)アクセストークン
-//	protected static AccessToken getAccessToken(String _sessionId) {
-//		return Cache.get(ACCESS_TOKEN_PREFIX + _sessionId, AccessToken.class);
-//	}
-//
-//	protected static void setAccessToken(
-//			String _sessionId, AccessToken _token, String _cacheLife) {
-//		Cache.set(ACCESS_TOKEN_PREFIX + _sessionId, _token, _cacheLife);
-//	}
-//
-//	protected static void deleteAccessToken(String _sessionId) {
-//		Cache.delete(ACCESS_TOKEN_PREFIX + _sessionId);
-//	}
 
 	// =============================================*
 	// (cache)リクエストトークン
@@ -235,49 +211,6 @@ public class MyController extends Controller {
 
 	// =============================================*
 	// (cache)アカウント情報用クラス
-//	public static class AccountPOJO {
-////		public long id;
-////		public long userId;// Twitter
-////		public String serialCode;
-////		public String signature;
-////		public String displayName;
-//		public AccessToken accessToken;
-//		public Account account;
-//
-////		protected boolean hasCoreData() {
-////			return 0 <= id &&
-////					0 <= userId &&
-////					isNotBlank(serialCode) &&
-////					isNotBlank(signature) &&
-////					isNotBlank(displayName);
-////		}
-//
-//		protected boolean hasAccessToken() {
-//			return accessToken != null;
-//		}
-//
-//		protected boolean hasAccount() {
-//			return account != null;
-//		}
-//
-//		protected void printLog() {
-////			Logger.debug("id         :" + id);
-////			Logger.debug("userId     :" + userId);
-////			Logger.debug("serialCode :" + serialCode);
-////			Logger.debug("signature  :" + signature);
-////			Logger.debug("displayName:" + displayName);
-//			Logger.debug("accessToken:" + accessToken.getToken());
-//			Logger.debug("account    :" + account);
-//		}
-//
-//		protected void copyAccessToken(){
-//			account.loginUser.accessToken.accessKey = accessToken.getToken();
-//			account.loginUser.accessToken.accessKeySecret = accessToken.getTokenSecret();
-//			account.loginUser.authenticated = true;
-//		}
-//
-//	}
-
 	protected static Account getCacheAccount(String _sessionId) {
 		if(isBlank(_sessionId)){
 			return null;

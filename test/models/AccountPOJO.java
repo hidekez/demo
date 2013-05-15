@@ -1,8 +1,3 @@
-/*
- * 作成日 2013/01/10
- * 修正日
- */
-
 package models;
 
 import java.util.ArrayList;
@@ -24,10 +19,6 @@ public class AccountPOJO {
 	// =============================================*
 	// コア
 	// =============================================*
-	// public Map<User, Boolean> users;
-
-	// public User currentUser;
-
 	public User loginUser;
 
 	public Date enteredAt;
@@ -35,12 +26,6 @@ public class AccountPOJO {
 	public Date visitedAt;
 
 	public LifeStateType life = LifeStateType.ALIVE;
-
-//	// =============================================*
-//	// 数値
-//	// =============================================*
-//	public int userSize;
-//	public int wholeVisitCount;
 
 	// =============================================*
 	// 双方向リレーション

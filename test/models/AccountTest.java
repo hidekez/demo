@@ -1,7 +1,3 @@
-/*
- * 作成日 2012/04/24
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- */
 package models;
 
 import models.Account;

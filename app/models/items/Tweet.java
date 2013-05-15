@@ -1,21 +1,3 @@
-/*
- * 作成日 2011/10/14
- * 修正日 2012/02/23 命名ルールの変更による
- * 修正日 2012/03/08 toStringの{}追加
- * 修正日 2012/04/05 構造改編 Tweet->TwitterPost
- * 修正日 2012/04/10 構造変更による（パッケージなど修正）
- * 修正日 2012/04/12 Tweet->Post、つぶやき->投稿(つぶやき)
- * 修正日 2012/04/24 toString,toMap,toJsonの削除、@Hide導入
- * 修正日 2012/04/25 TwitterPost->TwitterTweet
- * 修正日 2012/04/25 language/countryを削除
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2012/09/12 ->extends AbstractOriginalItem implements IStandardTweet
- * 修正日 2012/09/13 ->extends AbstractOriginalTweet
- * 修正日 2013/01/01 リポスト試作からの取り入れ
- * 修正日 2013/01/11 JPAマージヘルパ追加
- * 修正日 2013/01/22 検索関連でクラス・フィールド情報ヘルパ整理
- */
-
 package models.items;
 
 import java.util.Date;
@@ -244,12 +226,6 @@ public class Tweet extends ItemBase
 			return this;
 		}
 
-//		@Override
-//		public Builder serialCode(String _val) {
-//			this.serialCode = _val;
-//			return this;
-//		}
-
 		@Override
 		public Builder createdAt(Date _val) {
 			setCreatedAt(_val);
@@ -456,9 +432,6 @@ public class Tweet extends ItemBase
 	 */
 	@Override
 	public List<Category> getCategories() {
-//		if(this.categories == null){
-//			this.categories = Repost.findCategoriesByTweets(this);
-//		}
 		return this.categories;
 	}
 
@@ -473,9 +446,6 @@ public class Tweet extends ItemBase
 	 */
 	@Override
 	public List<Tag> getTags() {
-//		if(this.tags == null){
-//			this.tags = Repost.findTagsByTweets(this);
-//		}
 		return this.tags;
 	}
 
@@ -505,7 +475,6 @@ public class Tweet extends ItemBase
 	 */
 	@Override
 	public String getSignature() {
-//		throw new NoFittingDataExistException();
 		return null;
 	}
 
@@ -516,7 +485,6 @@ public class Tweet extends ItemBase
 	 */
 	@Override
 	public String getDisplayName() {
-//		throw new NoFittingDataExistException();
 		return null;
 	}
 
@@ -670,10 +638,6 @@ public class Tweet extends ItemBase
 		return find(getSignatureColName(), (Object[]) _params);
 	}
 
-//	public static JPAQuery findByDisplayName(String... _params) {
-//		return find(getDisplayNameColName(), (Object[]) _params);
-//	}
-
 	// =============================================*
 	// 特定的な取得
 	public static JPAQuery findUniquely(String _serialCode) {
@@ -743,178 +707,6 @@ public class Tweet extends ItemBase
 	 * ItemBase#detachCategories
 	 * ItemBase#detachTags
 	 */
-
-	/* ************************************************************ */
-
-	// FIXME 以下、tolist時のソース、一時的にコメントアウトしている
-
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * この投稿(つぶやき)への返信を収拾.
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public List<TwitterTweet> fetchMentions() {
-//		return TwitterTweet.find(
-//				"SELECT twt "
-//						+ "FROM TwitterTweet AS twt "
-//						+ "WHERE twt.inReplyTo.statusId = ?", this.statusId)
-//				.fetch();
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * メンションリスト作成して格納 セッター(setXzMentions)とは異なるのでメソッド名に注意 void method
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public void fetchAndSetMentions() {
-//		this.mentions = fetchMentions();
-//	}
-//
-//	/* ************************************************************ */
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 検索.
-//	 *
-//	 * @param _statusId
-//	 * @return 検索結果のインスタンス
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static TwitterTweet findOnly(long _statusId) {
-//		if (_statusId < 0) {
-//			return null;
-//		}
-//		return TwitterTweet.find("byStatusId", _statusId).first();
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 検索.
-//	 *
-//	 * @param _tweet
-//	 * @return 検索結果のインスタンス
-//	 */
-//	public static TwitterTweet findOnly(TwitterTweet _tweet) {
-//		if (_tweet == null || _tweet.valid() == false) {
-//			return null;
-//		}
-//		return findOnly(_tweet.statusId);
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 検索.
-//	 *
-//	 * @param _tweet
-//	 * @return 検索結果のインスタンス
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static TwitterTweet findOnlyNoValidate(TwitterTweet _tweet) {
-//		if (_tweet == null) {
-//			return null;
-//		}
-//		return findOnly(_tweet.statusId);
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	// 条件付き生成処理は「まとめられない」ので注意
-//	// オブジェクト版で引数をそのまま代入していたり、saveを条件内で行ったりしているため
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 条件付き生成処理（遅延生成のようなもの） 生データ指定版
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	// 作らない
-//	// 引数でNewするための情報をすべて渡す必要があるが、要素が多すぎる
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 条件付き生成処理（遅延生成のようなもの） オブジェクト指定版
-//	 *
-//	 * @param _tweet
-//	 *            TwitterTweetオブジェクト
-//	 * @return 検索結果、もしくは新規インスタンス
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static TwitterTweet findOrCreate(TwitterTweet _tweet) {
-//		if (_tweet == null || _tweet.valid() == false) {
-//			return null;
-//		}
-//		TwitterTweet tweet = findOnlyNoValidate(_tweet);
-//		if (tweet != null) {
-//			return tweet;
-//		}
-//		if (!putInnerPersistent(_tweet)) {
-//			return null;
-//		}
-//		return _tweet;
-//	}
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 条件付き生成処理（遅延生成のようなもの） オブジェクト指定・セーブあり版
-//	 *
-//	 * @param _tweet
-//	 *            TwitterTweetオブジェクト
-//	 * @return 検索結果、もしくは新規インスタンス
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static TwitterTweet findOrCreateAndSave(TwitterTweet _tweet) {
-//		if (_tweet == null || _tweet.valid() == false) {
-//			return null;
-//		}
-//		TwitterTweet tweet = findOnlyNoValidate(_tweet);
-//		// ↑ここまでfindOrCreateと同じだがまとめてはいけない。return nullするため
-//		// Find
-//		if (tweet != null) {
-//			tweet.save();// ★要検討
-//			return tweet;
-//		}
-//		// Create
-//		_tweet.save();
-//		return _tweet;
-//	}
-//
-//	/* ************************************************************ */
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * 重複チェックして保存（インスタンス用）.
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/*
-//	 * public void checkAndSave() { TwitterTweet tweet = findOnly(this); if
-//	 * (tweet != null) { this.save(); } else{ if (!this.isPersistent()) {
-//	 * //JPA.em().persist(this); JPA.em().merge(this); Logger.debug("merge"); }
-//	 * if (!this.validateAndSave()) { Logger.debug("un-save"); this.save(); }; }
-//	 * }
-//	 */
-//	/* ************************************************************ */
-//
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	/**
-//	 * エンティティ型フィールドの永続化チェック.
-//	 *
-//	 * @return
-//	 */
-//	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public static boolean putInnerPersistent(TwitterTweet _tweet) {
-//
-//		Logger.debug(">>TwitterTweet.putInnerPersistent");
-//
-//		if (_tweet.author == null) {
-//			return false;
-//		}
-//		if (!_tweet.author.isPersistent()) {
-//			if (!_tweet.author.validateAndSave()) {
-//				return false;
-//			}
-//		}
-//
-//		return true;
-//	}
 
 }
 /* ************************************************************ */

@@ -1,8 +1,3 @@
-/*
- * 作成日 2012/04/04
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- * 修正日 2013/01/11 JPAマージヘルパ追加
- */
 package models;
 
 import java.lang.reflect.InvocationTargetException;
@@ -130,12 +125,6 @@ abstract public class MySuperModel extends Model {
 	 * リレーショナルな関係を持つエンティティをすべてマージする。
 	 */
 	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-//	public void deepMerge() {
-//		mergeAll();
-//	}
-//	public Deque<String> mergeErrors = new ArrayDeque<String>();
-//	public boolean hasMergeError;
-
 	abstract public void mergeSubs();
 
 	public <T extends MySuperModel> T mergeAll() {
@@ -173,18 +162,3 @@ abstract public class MySuperModel extends Model {
 /* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 //=============================================*
 //-------------------------------------+
-/* ************************************************************ */
-/*
- * 以下、削除したコード
- * 　
- * 　
- * 　
- * 　
- * 　
- * 　
- * 　
- * 　
- * 　
- * 　
- */
-

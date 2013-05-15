@@ -1,8 +1,3 @@
-/*
- * 作成日 2012/09/15
- * 修正日 2013/01/07 リポスト組み込みに合わせた改造への最適化
- * 修正日 2013/01/22 uid,codeName -> serialColde
- */
 package models;
 
 import java.text.SimpleDateFormat;
@@ -63,12 +58,6 @@ public class TestModels {
 	public static final String FUTURE = "3000-01-01";
 
 	private static Date TODAY;
-
-//	public static final Date DATE1 = parseOrNull(YMD1);
-//	public static final Date DATE2 = parseOrNull(YMD2);
-//	public static final Date DATE3 = parseOrNull(YMD3);
-//	public static final Date DATE4 = parseOrNull(YMD4);
-//	public static final Date DATE5 = parseOrNull(YMD5);
 
 	public static final Date date1() {
 		return parseOrNull(YMD1);
@@ -158,10 +147,7 @@ public class TestModels {
 			iids[_i1][_i2] = new ItemId();
 		}
 		else if (iids[_i1][_i2].isPersistent() == false) {
-//			System.out.println("detached");
-//			System.out.println(iids[_i1][_i2].id);
 			iids[_i1][_i2] = iids[_i1][_i2].mergeAll();
-//			System.out.println(iids[_i1][_i2].isPersistent());
 		}
 		iids[_i1][_i2].save();
 	}
@@ -572,9 +558,6 @@ public class TestModels {
 			users[3] = newTwitterUser04();
 		}
 		else if (users[_i].isPersistent() == false) {
-//			if(users[_i].itemId.isPersistent() == false){
-//				users[_i].itemId = users[_i].itemId.mergeAll();
-//			}
 			users[_i] = users[_i].mergeAll();
 		}
 		users[_i].save();
@@ -608,7 +591,6 @@ public class TestModels {
 		pojo.country = TwitterCountry.getEnumByCode("jp");
 		pojo.isInReply = false;
 		pojo.hasGeo = true;
-		// ent.geo = new Geo(35.66746,139.550375);
 
 		return pojo;
 	}
@@ -626,8 +608,6 @@ public class TestModels {
 		pojo.country = TwitterCountry.getEnumByCode("jp");
 		pojo.isInReply = true;
 		pojo.hasGeo = true;
-//		ent.inReplyTo = new InReplyTo(1L,2L,"jiro");
-//		ent.geo = new Geo(35.685361,139.753141);
 
 		return pojo;
 	}
@@ -862,9 +842,6 @@ public class TestModels {
 			acnts[3] = newAccount04();
 		}
 		else if (acnts[_i].isPersistent() == false) {
-//			if (acnts[_i].loginUser.isPersistent() == false) {
-//				acnts[_i].loginUser = acnts[_i].loginUser.mergeAll();
-//			}
 			acnts[_i] = acnts[_i].mergeAll();
 		}
 		acnts[_i].save();
@@ -1164,12 +1141,6 @@ public class TestModels {
 			tags[3] = newTag04();
 		}
 		else if (tags[_i].isPersistent() == false) {
-//			if (tags[_i].author.isPersistent() == false) {
-//				if (tags[_i].author.loginUser.isPersistent() == false) {
-//					tags[_i].author.loginUser = tags[_i].author.loginUser.mergeAll();
-//				}
-//				tags[_i].author = tags[_i].author.mergeAll();
-//			}
 			tags[_i] = tags[_i].mergeAll();
 		}
 		tags[_i].save();
@@ -1180,30 +1151,6 @@ public class TestModels {
 		return tags[_i];
 	}
 
-	/* ************************************************************ */
-	public static void main(String[] args) {
-//		System.out.println("date1:" + date1());
-//		System.out.println("date2:" + date2());
-//		System.out.println("date3:" + date3());
-//		System.out.println("date4:" + date4());
-//		System.out.println("date5:" + date5());
-//
-//		TwitterUser tuser01 = newTwitterUser(tue01());
-//		System.out.println(tuser01);
-//		TwitterUser tuser02 = newTwitterUser(tue02());
-//		System.out.println(tuser02);
-//
-//		System.out.println(tu03());
-
-//		ItemId itemId = new ItemId();
-//		System.out.println(itemId);
-
-//		User u1 = savedUser01();
-//		System.out.println(u1);
-//		List<User> ul = getUserList01();
-//		System.out.println(ul);
-
-	}
 }
 /* ************************************************************ */
 /* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */

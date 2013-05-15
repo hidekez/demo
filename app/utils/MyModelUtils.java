@@ -1,7 +1,3 @@
-/*
- * 作成日 2012/07/22
- * 修正日 2012/09/14 アイテムコード生成メソッド追加
- */
 package utils;
 
 import static utils.Tools.NATURAL_ORDER;
@@ -23,13 +19,12 @@ import constants.ServiceType;
 import org.apache.commons.codec.binary.Base64;
 
 /**
- * モデルユーティリティクラス
+ * モデルユーティリティクラス.
  *
  * @author H.Kezuka
  */
 public class MyModelUtils {
 
-//	public static <T extends Comparable<? super T>> void sortById(List<T> _models){
 	public static <T extends Model> void sortById(List<T> _models) {
 		Collections.sort(_models, new Comparator<T>() {
 			@Override

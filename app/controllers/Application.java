@@ -1,10 +1,3 @@
-/*
- * 作成日 2011/10/03
- * 修正日 2012/02/23 命名ルールの変更による
- * 修正日 2012/04/10 構造変更による
- * 修正日 2012/06/05 コメントの変更（WZアウトライン用記号の削除）
- */
-
 package controllers;
 
 import java.util.HashMap;
@@ -34,14 +27,9 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @With(LogInterceptor.class)
 public class Application extends MyController {
 
-	/* ************************************************************ */
-	/* ************************************************************ */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-
 	/**
 	 * 表示(index).
 	 */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	// NOTE 放置してからのアクセスでTemplateNotFoundExceptionが発生する
 	public static void index() {
 		//		render(setupAccount());
@@ -82,7 +70,6 @@ public class Application extends MyController {
 	 *
 	 * @return ログインしているか否か
 	 */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static boolean setupAccount(boolean throughToEnd) {
 
 		// =============================================*
@@ -108,17 +95,6 @@ public class Application extends MyController {
 			Logger.debug("No session");// セッションなし
 			return false;
 		}
-
-		//		// -------------------------------------+
-		//		// セッションIDチェック
-		//		String cacheSesId =
-		//				Cache.get(SESSION_ID_PREFIX + accountId, String.class);
-		//
-		//		if (isNotBlank(cacheSesId) && cacheSesId.equals(sessionId)) {
-		//			Logger.debug("不整合なセッションID");
-		//			sessionClear();// セッションクリア処理
-		//			// return false;
-		//		}
 
 		// =============================================*
 		// キャッシュチェック
@@ -172,11 +148,9 @@ public class Application extends MyController {
 	/**
 	 * セッションとキャッシュの削除処理.
 	 */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static void sessionClear() {
 
 		String sessionId = session.getId();
-		//		Account account = getCacheAccount(sessionId);
 
 		Logger.debug("Cache clear");// キャッシュクリア
 		deleteCacheAccount(sessionId);
@@ -192,16 +166,10 @@ public class Application extends MyController {
 	/**
 	 * ユーザー情報のAjax配信.
 	 */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
 	public static void ajaxUserInfo() {
 
 		boolean isLogin = setupAccount(true);
 		String sessionId = session.getId();
-		//		Account account = getCacheAccount(sessionId);
-
-		//		Logger.debug("Play.applicationPath : " + Play.applicationPath);
-		//		Logger.debug("Play.ctxPath : " + Play.ctxPath);
-		//		Logger.debug("Play.frameworkPath : " + Play.frameworkPath);
 
 		String appPath = Play.applicationPath.toString();
 		String locPath = Play.configuration
@@ -211,16 +179,6 @@ public class Application extends MyController {
 		if (-1 < appPath.indexOf(locPath)) {
 			isLocal = true;
 		}
-		//		Logger.debug("appPath : " + appPath);
-		//		Logger.debug("locPath : " + locPath);
-		//		Logger.debug("isLocalFlag : " + isLocalFlag);
-
-		//		HashMap<String, String> accountInfo = new HashMap<String, String>();
-		//		accountInfo.put("loc", "" + isLocal);
-		//		accountInfo.put("dev", "" + Play.mode.isDev());
-		//		accountInfo.put(USER_ID_PREFIX, "" + getSessionUserId(sessionId));
-		//		accountInfo.put(SCREEN_NAME_PREFIX, getSessionScreenName(sessionId));
-		//		accountInfo.put("login", "" + isLogin);
 
 		HashMap<String, Object> accountInfo = new HashMap<String, Object>();
 		accountInfo.put("loc", isLocal);
@@ -231,21 +189,6 @@ public class Application extends MyController {
 
 		renderJSON(accountInfo);
 	}
-
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-	/**
-	 * リポスト.
-	 */
-	/* ++++++++++++++++++++++++++*+++++++++++++++++++++++++ */
-	//	public static void repost( String rqtagid, String rqtwtid ){
-	//		Tag xTag = Tag.findById( Long.parseLong(rqtagid));
-	//		Tweet xTweet = Tweet.findById( Long.parseLong(rqtwtid));
-	//		//Tweet xTweet =
-	//		//Tweet.findOrCreateAndSave( Long.parseLong(rqtwtid));
-	//		Logger.debug(( xTag != null ) ? "tag ok": "tag null" );
-	//		Logger.debug(( xTweet != null ) ? "tweet ok": "tweet null" );
-	//		renderJSON( xTag );
-	//	}
 
 }
 /* ************************************************************ */
