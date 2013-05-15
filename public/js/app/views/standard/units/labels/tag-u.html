@@ -1,0 +1,34 @@
+<!-- label.TagUnitCtrl -->
+<!-- ---------------------------------------- -->
+<!-- Unit -->
+<a href="#{{$parent.fullPath}}/{{ tag.id }}"
+   class="btn"
+   ng-hide="editing">
+	<span class="name">{{ tag.name }}</span>
+</a>
+<input ng-model="tag.name" type="text"
+	   ng-show="editing" maxlength="20"
+	   ui-keypress="{13:'doneEditTag($event)'}"
+	   ui-if="isMy"
+		/>
+<span class="btn"
+	  ui-if="isMy"
+	  ng-click="editTag(tag.id)"
+	  ng-hide="editing"
+		><i class="icon-edit"></i></span>
+<span class="btn"
+	  ui-if="isMy"
+	  ng-click="deleteTag(tag.id)"><i class="icon-trash"></i></span>
+<span class="btn"
+	  ng-click="favoriteTag(tag)">
+	<span ng-switch="tag.favorite">
+		<span ng-switch-when="true">
+			★
+		</span>
+		<span ng-switch-default>
+			☆
+		</span>
+	</span>
+</span>
+<!-- /Unit -->
+<!-- ---------------------------------------- -->

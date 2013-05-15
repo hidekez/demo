@@ -1,0 +1,37 @@
+<!-- ---------------------------------------- -->
+<!-- Unit -->
+<a href="#{{$parent.fullPath}}/{{ folder.id }}"
+   class="btn"
+   ng-hide="editing">
+	<span class="name">{{ folder.name }}</span>
+</a>
+<input ng-model="folder.name" type="text"
+	   ng-show="editing" maxlength="20"
+	   ui-keypress="{13:'doneEditFolder($event)'}"
+	   ui-if="isMy"
+		/>
+<span class="btn"
+	  ui-if="isMy"
+	  ng-click="editFolder(folder.id)"
+	  ng-hide="editing"><i class="icon-edit"></i></span>
+<span class="btn"
+	  ui-if="isMy"
+	  ng-click="deleteFolder(folder.id)"><i class="icon-trash"></i></span>
+<span class="btn"
+	  ui-if="isNotFriends"
+	  ng-click="favoriteFolder(folder)">
+	<span ng-switch="folder.favorite">
+		<span ng-switch-when="true">
+			★
+		</span>
+		<span ng-switch-default>
+			☆
+		</span>
+	</span>
+</span>
+<!--<span class="btn"-->
+<!--ng-switch-default-->
+<!--ng-click="favoriteFolder(folder.id)"><i class="icon-star"></i></span>-->
+<!--</span>-->
+<!-- /Unit -->
+<!-- ---------------------------------------- -->

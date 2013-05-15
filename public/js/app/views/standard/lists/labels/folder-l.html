@@ -1,0 +1,51 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(item/folder)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(Folder)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header"
+			ng-switch="getActiveLineName()">
+		<button ng-switch-when="my"
+				ng-click="addFolder()"><i class="icon-plus"></i>add</button>
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+	<div ng-switch="isLoading">
+
+		<!-- BEGIN: Loading Sequence. -->
+		<div ng-switch-when="true">
+
+			Loading....
+
+		</div>
+		<!-- END: Loading Sequence. -->
+
+		<!-- BEGIN: View. -->
+		<div ng-switch-when="false">
+			<ul ng-show="folders.length">
+				<li ng-repeat="folder in folders"
+					ng-controller="label.FolderUnitCtrl"
+					ng-include="consts.templatePath.labels.folder.unit"
+					ng-init="initFolderUnit(); scopeName = 'unit (in units)'"></li>
+			</ul>
+		</div>
+		<!-- END: View. -->
+
+	</div>
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->
+
+

@@ -1,0 +1,52 @@
+<!-- ---------------------------------------- -->
+<!-- Face -->
+<div ng-init="scopeName = 'insideFace'">
+
+	<p ng-show="showDebugPrintOnView()">
+		$scope.$id: [ {{$id}} ]
+		-- <span class="font-blue">face.subview: [ {{subview}} ]</span>
+		-- <span class="font-green">faceId: [ {{$routeParams.faceId}} ]</span>
+		-- <span class="font-brown">face.isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- Face Header -->
+
+	<header class="face-header navbar">
+		<div class="navbar-inner face-navbar-inner">
+			<ul class="pager inline">
+				<li class="previous" ng-show="faces.length > 1">
+					<a href="#{{parentPath}}/{{getPrevFaceName()}}"><!-- /app/{{columnName}}/ -->
+						<i class="icon-arrow-left"></i>{{ getPrevFaceName() | word }}
+					</a>
+				</li>
+				<li><h1 class="face-label">{{ getActiveFaceName() | word }}</h1></li>
+				<li class="next" ng-show="faces.length > 1">
+					<a href="#{{parentPath}}/{{getNextFaceName()}}">
+						{{ getNextFaceName() | word }}<i class="icon-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+	<!-- /Face Header -->
+	<!-- ---------------------------------------- -->
+	<!-- Face Body == Line -->
+	<!--
+		[Notes]
+		templatePath = LineCtrl.templatePath = line.html
+	-->
+	<section class="line border-orange"
+			 ng-controller="standard.LineCtrl"
+			 ng-init="initLine(); scopeName = 'face-body/line'"
+			 ng-include="templatePath"
+			>
+	</section>
+	<!-- /Face Body == Line -->
+	<!-- ---------------------------------------- -->
+
+</div>
+<!-- /Face -->
+<!-- ---------------------------------------- -->
+

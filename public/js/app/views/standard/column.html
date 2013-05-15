@@ -1,0 +1,36 @@
+<!-- ---------------------------------------- -->
+<!-- Column -->
+<section ng-init="scopeName = 'insideColumn'">
+
+	<p ng-show="showDebugPrintOnView()">
+		$scope.$id: [ {{$id}} ]
+		-- <span class="font-blue">column.subview: [ {{subview}} ]</span>
+		-- <span class="font-green">columnId: [ {{$routeParams.columnId}} ]</span>
+		-- <span class="font-crimson">activeColumn: [ {{activeColumn.name}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- Column Header -->
+
+	<div class="column-header">{{ getColumnName() | word }}</div>
+
+	<!-- /Column Header -->
+	<!-- ---------------------------------------- -->
+	<!-- Column Body == Face -->
+	<!--
+		[Notes]
+		templatePath = FaceCtrl.templatePath = face.html
+	-->
+	<section class="face border-green"
+			 ng-controller="standard.FaceCtrl"
+			 ng-init="initFace(); scopeName = 'column-body/face'"
+			 ng-include="consts.templatePath.face"
+			>
+	</section>
+	<!-- /Column Body == Face -->
+	<!-- ---------------------------------------- -->
+
+</section>
+<!-- /Column -->
+<!-- ---------------------------------------- -->
+

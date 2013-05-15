@@ -1,0 +1,52 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(item/tag)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(Tag)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header"
+			ng-switch="getActiveLineName()">
+			<button ng-switch-when="my"
+					ng-click="addTag()"><i class="icon-plus"></i>add</button>
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+	<div ng-switch="isLoading">
+
+		<!-- BEGIN: Loading Sequence. -->
+		<div ng-switch-when="true">
+
+			Loading....
+
+		</div>
+		<!-- END: Loading Sequence. -->
+
+
+		<!-- BEGIN: View. -->
+		<div ng-switch-when="false">
+			<ul ng-show="tags.length">
+				<li ng-repeat="tag in tags"
+					ng-controller="label.TagUnitCtrl"
+					ng-include="consts.templatePath.labels.tag.unit"
+					ng-init="initTagUnit(); scopeName = 'unit (in units)'"></li>
+			</ul>
+		</div>
+		<!-- END: View. -->
+
+	</div>
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->
+
+

@@ -1,0 +1,1214 @@
+#******************************************************
+# Test Models
+# 作成日:2013/01/12
+#******************************************************
+#******************************************************
+#
+#1 パッケージ
+#
+#******************************************************
+################################################
+#
+#2 クラス
+#
+################################################
+#=======================================
+#3 用途による細分類
+#=======================================
+#-----------------------------------
+#
+# 設定モデル
+# models.Account
+# models.items.ItemId
+# models.items.User
+# models.items.Tweet
+# models.labels.Category
+# models.labels.Tag
+# models.reposts.Repost
+# models.reposts.RepostUserCategory
+# models.reposts.RepostUserTag
+# models.reposts.RepostTweetCategory
+# models.reposts.RepostTweetTag
+#
+#-----------------------------------
+# 依存関係
+# 必要とされる <- 必要としてる
+# ItemId    <- User(itemId)
+# ItemId    <- Tweet(itemId)
+# User      <- Account(loginUser)
+# User      <- Tweet(author)
+# Account   <- Tag(author)
+# Account   <- Repost(contributor)
+#
+# User      <- RepostUserCategory(user)
+# User      <- RepostUserTag(user)
+# Tweet     <- RepostTweetCategory(tweet)
+# Tweet     <- RepostTweetTag(tweet)
+# Category  <- RepostUserCategory(category)
+# Category  <- RepostTweetCategory(category)
+# Tag       <- RepostUserTag(tag)
+# Tag       <- RepostTweetTag(tag)
+#
+#-----------------------------------
+# 集合関係
+# 集合される <- 集合を持つ
+# Tag        <- Account(tags@OneToMany)
+#
+# Tweet      <- User(tweets@Transient)
+# Tweet      <- Tweet(mentions@Transient)
+# LabelBase  <- User(labels@Transient)
+# LabelBase  <- Tweet(labels@Transient)
+# Category   <- User(categories@Transient)
+# Category   <- Tweet(categories@Transient)
+# Tag        <- User(tags@Transient)
+# Tag        <- Tweet(tags@Transient)
+#
+#-----------------------------------
+# 記述する順番
+# ItemId
+# User
+# Tweet
+# Account
+# Category
+# Tag
+# RepostUserCategory
+# RepostTweetCategory
+# RepostUserTag
+# RepostTweetTag
+# Repost
+#
+#******************************************************
+#
+#1 アイテム(items)
+#
+#******************************************************
+################################################
+#
+#2 アイテム通しID(ItemId)
+#
+################################################
+items.ItemId(iid_usr_goro):
+items.ItemId(iid_usr_jiro):
+items.ItemId(iid_usr_hanako):
+items.ItemId(iid_usr_bob):
+#-----------------------------------
+items.ItemId(iid_twt_goro1):
+items.ItemId(iid_twt_goro2):
+items.ItemId(iid_twt_goro3):
+items.ItemId(iid_twt_goro4):
+#-----------------------------------
+items.ItemId(iid_twt_jiro1):
+items.ItemId(iid_twt_jiro2):
+items.ItemId(iid_twt_jiro3):
+items.ItemId(iid_twt_jiro4):
+items.ItemId(iid_twt_jiro5):
+#-----------------------------------
+items.ItemId(iid_twt_hanako1):
+items.ItemId(iid_twt_hanako2):
+items.ItemId(iid_twt_hanako3):
+items.ItemId(iid_twt_hanako4):
+items.ItemId(iid_twt_hanako5):
+#-----------------------------------
+items.ItemId(iid_twt_bob1):
+
+################################################
+#
+#2 ユーザー(User)
+#
+################################################
+items.User(usr_goro):
+    itemId:
+                            iid_usr_goro
+    serialCode:
+                            usr-goro
+    createdAt:
+                            2010-09-24
+    enteredAt:
+                            2012-01-01
+    state:
+                            OK
+    userId:
+                            1
+    screenName:
+                            goro_san
+    userName:
+                            田中五郎
+    profileImageUrl:
+                            http://a0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    profileImageUrlHttps:
+                            https://si0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    language:
+                            ja
+    country:
+                            jp
+    timeZone:
+                            Tokyo
+    utcOffset:
+                            0
+    location:
+                            dummy
+    discription:
+                            dummy
+    url:
+
+    friendsCount:
+                            0
+    followersCount:
+                            0
+    statusesCount:
+                            0
+    favouritesCount:
+                            0
+    listedCount:
+                            0
+    isFollowing:
+                            false
+    isProtected:
+                            false
+    verified:
+                            false
+    authenticated:
+    accessKey:
+    accessKeySecret:
+    tweets:
+
+#-----------------------------------
+items.User(usr_jiro):
+    itemId:
+                            iid_usr_jiro
+    serialCode:
+                            usr-jiro
+    createdAt:
+                            2010-10-01
+    enteredAt:
+                            2012-01-02
+    state:
+                            OK
+    userId:
+                            2
+    screenName:
+                            jiro_san
+    userName:
+                            鈴木次郎
+    profileImageUrl:
+                            http://a0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    profileImageUrlHttps:
+                            https://si0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    language:
+                            en
+    country:
+                            us
+    timeZone:
+                            Eastern Time
+    utcOffset:
+                            0
+    location:
+                            dummy
+    discription:
+                            dummy
+    url:
+
+    friendsCount:
+                            0
+    followersCount:
+                            0
+    statusesCount:
+                            0
+    favouritesCount:
+                            0
+    listedCount:
+                            0
+    isFollowing:
+                            false
+    isProtected:
+                            false
+    verified:
+                            false
+    authenticated:
+    accessKey:
+    accessKeySecret:
+    tweets:
+
+#-----------------------------------
+items.User(usr_hanako):
+    itemId:
+                            iid_usr_hanako
+    serialCode:
+                            usr-hanako
+    createdAt:
+                            2010-11-01
+    enteredAt:
+                            2012-01-03
+    state:
+                            OK
+    userId:
+                            3
+    screenName:
+                            hana_chan
+    userName:
+                            佐藤花子
+    profileImageUrl:
+                            http://a0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    profileImageUrlHttps:
+                            https://si0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    language:
+                            ja
+    country:
+                            jp
+    timeZone:
+                            Tokyo
+    utcOffset:
+                            0
+    location:
+                            dummy
+    discription:
+                            dummy
+    url:
+
+    friendsCount:
+                            0
+    followersCount:
+                            0
+    statusesCount:
+                            0
+    favouritesCount:
+                            0
+    listedCount:
+                            0
+    isFollowing:
+                            false
+    isProtected:
+                            false
+    verified:
+                            false
+    authenticated:
+    accessKey:
+    accessKeySecret:
+    tweets:
+
+#-----------------------------------
+# Repostと関連を持たないユーザーとして
+items.User(usr_bob):
+    itemId:
+                            iid_usr_bob
+    serialCode:
+                            usr-bob
+    createdAt:
+                            2010-12-01
+    enteredAt:
+                            2012-01-04
+    state:
+                            OK
+    userId:
+                            4
+    screenName:
+                            bob
+    userName:
+                            Bob
+    profileImageUrl:
+                            http://a0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    profileImageUrlHttps:
+                            https://si0.twimg.com/profile_images/1404776532/hime_afro3_normal.jpg
+    language:
+                            en
+    country:
+                            uk
+    timeZone:
+                            London
+    utcOffset:
+                            0
+    location:
+                            dummy
+    discription:
+                            dummy
+    url:
+
+    friendsCount:
+                            0
+    followersCount:
+                            0
+    statusesCount:
+                            0
+    favouritesCount:
+                            0
+    listedCount:
+                            0
+    isFollowing:
+                            false
+    isProtected:
+                            false
+    verified:
+                            false
+    authenticated:
+    accessKey:
+    accessKeySecret:
+    tweets:
+
+#################################################
+##
+##3 IPアドレス(IpAddress)
+##
+#################################################
+#IpAddress(ip1):
+#    sIpAddress:             192.168.0.1
+#    eIpAddressType:         IPV4
+#
+#IpAddress(ip2):
+#    sIpAddress:             255.255.255.0
+#    eIpAddressType:         IPV4
+#
+#IpAddress(ip3):
+#    sIpAddress:             111.111.111.1
+#    eIpAddressType:         IPV4
+#
+#IpAddress(ip4):
+#    sIpAddress:             2001:db8:20:3:1000:100:20:3
+#    eIpAddressType:         IPV6
+
+#################################################
+##
+##3 位置情報(Geo)
+##
+#################################################
+## 必要性が曖昧なので必須な情報から外している
+#items.multi.Geo(geo1):
+#    latitude:              35.650584
+#    longitude:             139.540808
+#
+#items.multi.Geo(geo2):
+#    latitude:              38.897513
+#    longitude:             -77.03639
+#
+#################################################
+##
+##3 返信情報(InReplyTo)
+##
+#################################################
+## 必要性が曖昧なので必須な情報から外している
+#items.multi.InReplyTo(reply1):
+#    statusId:              0
+#    userId:                1
+#    screenName:            User1
+#
+#items.multi.InReplyTo(reply2):
+#    statusId:              1
+#    userId:                2
+#    screenName:            User2
+#
+
+################################################
+#
+#3 つぶやき(Tweet)
+#
+################################################
+items.Tweet(twt_goro1):
+    itemId:
+                            iid_twt_goro1
+    serialCode:
+                            twt-goro1
+    createdAt:
+                            2012-01-01
+    enteredAt:
+                            2012-01-01
+    state:
+                            OK
+    statusId:               101
+    text:                   東京は一日晴れ模様
+    author:                 usr_goro
+    language:               JAPANESE
+    country:                JAPAN
+    isInReply:
+    hasGeo:
+#   repStatusId:
+#   repUserId:
+#   repScreenName:
+    inReplyTo:
+#   latitude:
+#   longitude:
+    geo:
+    mentions:
+
+#-----------------------------------
+items.Tweet(twt_goro2):
+    itemId:
+                            iid_twt_goro2
+    serialCode:
+                            twt-goro2
+    createdAt:
+                            2012-01-02
+    enteredAt:
+                            2012-01-02
+    state:
+                            OK
+    statusId:               102
+    text:                   コンテキストメニューの並び替えってできないんだろうか？
+    author:                 usr_goro
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+items.Tweet(twt_goro3):
+    itemId:
+                            iid_twt_goro3
+    serialCode:
+                            twt-goro3
+    createdAt:
+                            2012-01-03
+    enteredAt:
+                            2012-01-03
+    state:
+                            OK
+    statusId:               103
+    text:                   もう１２日だってばよ！
+    author:                 usr_goro
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+items.Tweet(twt_goro4):
+    itemId:
+                            iid_twt_goro4
+    serialCode:
+                            twt-goro4
+    createdAt:
+                            2012-01-04
+    enteredAt:
+                            2012-01-04
+    state:
+                            OK
+    statusId:               104
+    text:                   >
+                            けふのうちに
+                            とほくへ　いってしまふ　わたくしの　いもうとよ
+                            みぞれがふって　おもては　へんに　あかるいのだ
+                            （あめゆじゅ　とてちて　けんじゃ）
+    author:                 usr_goro
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+#-----------------------------------
+items.Tweet(twt_jiro1):
+    itemId:
+                            iid_twt_jiro1
+    serialCode:
+                            twt-jiro1
+    createdAt:
+                            2012-02-01
+    enteredAt:
+                            2012-02-01
+    state:
+                            OK
+    statusId:               201
+    text:                   New York is rainy.
+    author:                 usr_jiro
+    language:               ENGLISH
+    country:
+    isInReply:
+    hasGeo:
+#   repStatusId:
+#   repUserId:
+#   repScreenName:
+    inReplyTo:
+#   latitude:
+#   longitude:
+    geo:
+    mentions:
+
+#-----------------------------------
+items.Tweet(twt_jiro2):
+    itemId:
+                            iid_twt_jiro2
+    serialCode:
+                            twt-jiro2
+    createdAt:
+                            2012-02-02
+    enteredAt:
+                            2012-02-02
+    state:
+                            OK
+    statusId:               202
+    text:                   Hello world!
+    author:                 usr_jiro
+    language:               ENGLISH
+    country:
+
+#-----------------------------------
+items.Tweet(twt_jiro3):
+    itemId:
+                            iid_twt_jiro3
+    serialCode:
+                            twt-jiro3
+    createdAt:
+                            2012-02-03
+    enteredAt:
+                            2012-02-03
+    state:
+                            OK
+    statusId:               203
+    text:                   everything gonna be alright.
+    author:                 usr_jiro
+    language:               ENGLISH
+    country:
+
+#-----------------------------------
+items.Tweet(twt_jiro4):
+    itemId:
+                            iid_twt_jiro4
+    serialCode:
+                            twt-jiro4
+    createdAt:
+                            2012-02-04
+    enteredAt:
+                            2012-02-04
+    state:
+                            OK
+    statusId:               204
+    text:                   it's so easy for me.
+    author:                 usr_jiro
+    language:               ENGLISH
+    country:
+
+#-----------------------------------
+items.Tweet(twt_jiro5):
+    itemId:
+                            iid_twt_jiro5
+    serialCode:
+                            twt-jiro5
+    createdAt:
+                            2012-02-05
+    enteredAt:
+                            2012-02-05
+    state:
+                            OK
+    statusId:               205
+    text:                   Happy new year!
+    author:                 usr_jiro
+    language:               ENGLISH
+    country:
+
+#-----------------------------------
+#-----------------------------------
+items.Tweet(twt_hanako1):
+    itemId:
+                            iid_twt_hanako1
+    serialCode:
+                            twt-hanako1
+    createdAt:
+                            2012-03-01
+    enteredAt:
+                            2012-03-01
+    state:
+                            OK
+    statusId:               301
+    text:                   今年の冬は暖かいね
+    author:                 usr_hanako
+    language:               JAPANESE
+    country:                JAPAN
+    isInReply:
+    hasGeo:
+#   repStatusId:
+#   repUserId:
+#   repScreenName:
+    inReplyTo:
+#   latitude:
+#   longitude:
+    geo:
+    mentions:
+
+#-----------------------------------
+items.Tweet(twt_hanako2):
+    itemId:
+                            iid_twt_hanako2
+    serialCode:
+                            twt-hanako2
+    createdAt:
+                            2012-03-02
+    enteredAt:
+                            2012-03-02
+    state:
+                            OK
+    statusId:               302
+    text:                   >
+                            あめんぼあかいなあいうえお
+                            かきのきくりのきかきくけこ
+    author:                 usr_hanako
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+items.Tweet(twt_hanako3):
+    itemId:
+                            iid_twt_hanako3
+    serialCode:
+                            twt-hanako3
+    createdAt:
+                            2012-03-01
+    enteredAt:
+                            2012-03-01
+    state:
+                            OK
+    statusId:               303
+    text:                   ビジュアル系ってどうしてるんだろう？
+    author:                 usr_hanako
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+items.Tweet(twt_hanako4):
+    itemId:
+                            iid_twt_hanako4
+    serialCode:
+                            twt-hanako4
+    createdAt:
+                            2012-03-04
+    enteredAt:
+                            2012-03-04
+    state:
+                            OK
+    statusId:               304
+    text:                   花子とか━━
+    author:                 usr_hanako
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+items.Tweet(twt_hanako5):
+    itemId:
+                            iid_twt_hanako5
+    serialCode:
+                            twt-hanako5
+    createdAt:
+                            2012-03-05
+    enteredAt:
+                            2012-03-05
+    state:
+                            OK
+    statusId:               305
+    text:                   あけおめ～
+    author:                 usr_hanako
+    language:               JAPANESE
+    country:                JAPAN
+
+#-----------------------------------
+#-----------------------------------
+# Repostと関連を持たないつぶやきとして
+items.Tweet(twt_bob1):
+    itemId:
+                            iid_twt_bob1
+    serialCode:
+                            twt-bob1
+    createdAt:
+                            2012-04-01
+    enteredAt:
+                            2012-04-01
+    state:
+                            OK
+    statusId:               401
+    text:                   How do you do?
+    author:                 usr_bob
+    language:               ENGLISH
+    country:                UK
+
+
+################################################
+#
+#2 アカウント(Account)
+#
+################################################
+Account(acnt_goro):
+    loginUser:
+                            usr_goro
+    enteredAt:
+                            2012-01-01
+    visitedAt:
+                            2012-01-01
+    life:
+                            ALIVE
+    tags:
+
+#-----------------------------------
+Account(acnt_jiro):
+    loginUser:
+                            usr_jiro
+    enteredAt:
+                            2012-01-02
+    visitedAt:
+                            2012-01-02
+    life:
+                            ALIVE
+    tags:
+
+#-----------------------------------
+Account(acnt_hanako):
+    loginUser:
+                            usr_hanako
+    enteredAt:
+                            2012-01-03
+    visitedAt:
+                            2012-01-03
+    life:
+                            ALIVE
+    tags:
+
+#-----------------------------------
+# Repostと関連を持たないつぶやきとして
+Account(acnt_bob):
+    loginUser:
+                            usr_bob
+    enteredAt:
+                            2012-01-04
+    visitedAt:
+                            2012-01-04
+    life:
+                            ALIVE
+    tags:
+
+
+#******************************************************
+#
+#1 ラベル(labels)
+#
+#******************************************************
+################################################
+#
+#2 カテゴリー(Category)
+#
+################################################
+labels.Category(cat_biz):
+    serialCode:
+                            cat-biz
+    displayName:
+                            ビジネス
+#-----------------------------------
+labels.Category(cat_eco):
+    serialCode:
+                            cat-eco
+    displayName:
+                            経済
+#-----------------------------------
+labels.Category(cat_enta):
+    serialCode:
+                            cat-enta
+    displayName:
+                            エンターテインメント
+#-----------------------------------
+labels.Category(cat_hello):
+    serialCode:
+                            cat-hello
+    displayName:
+                            Hello
+
+#-----------------------------------
+labels.Category(cat_no_repo):
+    serialCode:
+                            cat-no-repo
+    displayName:
+                            ノーリポスト
+
+
+################################################
+#
+#2 タグ(Tag)
+#
+################################################
+#OpenLebel.PUBLIC(0)
+#OpenLebel.GROUP_PRIVATE(1)
+#OpenLebel.PRIVATE(2)
+#-----------------------------------
+labels.Tag(tag_goro_red):
+    serialCode:
+                            tag-goro-red
+    displayName:
+                            赤
+    author:
+                            acnt_goro
+    openLevel:
+                            0
+#-----------------------------------
+labels.Tag(tag_goro_blue):
+    serialCode:
+                            tag-goro-blue
+    displayName:
+                            青
+    author:
+                            acnt_goro
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_goro_green):
+    serialCode:
+                            tag-goro-green
+    displayName:
+                            緑
+    author:
+                            acnt_goro
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_goro_gold):
+    serialCode:
+                            tag-goro-gold
+    displayName:
+                            金
+    author:
+                            acnt_goro
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_goro_hello):
+    serialCode:
+                            tag-goro-hello
+    displayName:
+                            Hello
+    author:
+                            acnt_goro
+    openLevel:
+                            0
+
+#-----------------------------------
+#-----------------------------------
+labels.Tag(tag_jiro_hello):
+    serialCode:
+                            tag-jiro-hello
+    displayName:
+                            Hello
+    author:
+                            acnt_jiro
+    openLevel:
+                            2
+
+#-----------------------------------
+labels.Tag(tag_jiro_goodbye):
+    serialCode:
+                            tag-jiro-goodbye
+    displayName:
+                            Good bye
+    author:
+                            acnt_jiro
+    openLevel:
+                            2
+
+#-----------------------------------
+labels.Tag(tag_jiro_ohayo):
+    serialCode:
+                            tag-jiro-ohayo
+    displayName:
+                            おはよう
+    author:
+                            acnt_jiro
+    openLevel:
+                            0
+
+#-----------------------------------
+#-----------------------------------
+labels.Tag(tag_hanako_gold):
+    serialCode:
+                            tag-hanako-gold
+    displayName:
+                            金
+    author:
+                            acnt_hanako
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_hanako_silver):
+    serialCode:
+                            tag-hanako-silver
+    displayName:
+                            銀
+    author:
+                            acnt_hanako
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_hanako_copper):
+    serialCode:
+                            tag-hanako-copper
+    displayName:
+                            銅
+    author:
+                            acnt_hanako
+    openLevel:
+                            0
+
+#-----------------------------------
+labels.Tag(tag_hanako_money):
+    serialCode:
+                            tag-hanako-money
+    displayName:
+                            金
+    author:
+                            acnt_hanako
+    openLevel:
+                            2
+
+#-----------------------------------
+#-----------------------------------
+labels.Tag(tag_bob_no_repo):
+    serialCode:
+                            tag-bob-no-repo
+    displayName:
+                            ノーリポスト
+    author:
+                            acnt_bob
+    openLevel:
+                            0
+
+#******************************************************
+#
+#1 リポスト(reposts)
+#
+#******************************************************
+#                   U   T
+# tag_goro_red      1   2
+# tag_goro_blue     0   2
+# tag_goro_green    0   4
+# tag_goro_gold     1   1
+# tag_goro_hello    0   1
+# tag_jiro_hello    1   1
+# tag_jiro_goodbye  1   0
+# tag_jiro_ohayo    1   1
+# tag_hanako_gold   1   1
+# tag_hanako_silver 0   1
+# tag_hanako_copper 0   1
+# tag_hanako_money  1   1
+
+################################################
+#
+#2 リポストユーザーカテゴリー(RepostUserCategory)
+#
+################################################
+reposts.RepostUserCategory(ruc1):
+    user:                   usr_goro
+    category:               cat_biz
+    contributor:            acnt_goro
+    repostedAt:             2012-07-01
+
+#-----------------------------------
+reposts.RepostUserCategory(ruc2):
+    user:                   usr_jiro
+    category:               cat_enta
+    contributor:            acnt_goro
+    repostedAt:             2012-07-02
+
+reposts.RepostUserCategory(ruc3):
+    user:                   usr_jiro
+    category:               cat_hello
+    contributor:            acnt_goro
+    repostedAt:             2012-07-03
+
+################################################
+#
+#2 リポストユーザータグ(RepostUserTag)
+#
+################################################
+reposts.RepostUserTag(rut_t_1):
+    user:                   usr_goro
+    tag:                    tag_goro_red
+    contributor:            acnt_goro
+    repostedAt:             2012-07-04
+
+reposts.RepostUserTag(rut_t_2):
+    user:                   usr_goro
+    tag:                    tag_jiro_hello
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-05
+
+reposts.RepostUserTag(rut_t_3):
+    user:                   usr_goro
+    tag:                    tag_jiro_goodbye
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-06
+
+#-----------------------------------
+reposts.RepostUserTag(rut_j_4):
+    user:                   usr_jiro
+    tag:                    tag_goro_gold
+    contributor:            acnt_goro
+    repostedAt:             2012-07-07
+
+reposts.RepostUserTag(rut_j_5):
+    user:                   usr_jiro
+    tag:                    tag_hanako_gold
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-08
+
+reposts.RepostUserTag(rut_j_6):
+    user:                   usr_jiro
+    tag:                    tag_hanako_money
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-09
+
+#-----------------------------------
+reposts.RepostUserTag(rut_h_7):
+    user:                   usr_hanako
+    tag:                    tag_jiro_ohayo
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-10
+
+################################################
+#
+#2 リポストツイートカテゴリー(RepostTweetCategory)
+#
+################################################
+reposts.RepostTweetCategory(rtc_g1_1):
+    tweet:                  twt_goro1
+    category:               cat_hello
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-11
+
+reposts.RepostTweetCategory(rtc_g2_1):
+    tweet:                  twt_goro2
+    category:               cat_enta
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-12
+
+reposts.RepostTweetCategory(rtc_g2_2):
+    tweet:                  twt_goro2
+    category:               cat_eco
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-13
+
+reposts.RepostTweetCategory(rtc_g4_1):
+    tweet:                  twt_goro4
+    category:               cat_enta
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-14
+
+#-----------------------------------
+reposts.RepostTweetCategory(rtc_j1_1):
+    tweet:                  twt_jiro1
+    category:               cat_biz
+    contributor:            acnt_goro
+    repostedAt:             2012-07-15
+
+reposts.RepostTweetCategory(rtc_j1_2):
+    tweet:                  twt_jiro1
+    category:               cat_hello
+    contributor:            acnt_goro
+    repostedAt:             2012-07-16
+
+reposts.RepostTweetCategory(rtc_j2_1):
+    tweet:                  twt_jiro2
+    category:               cat_eco
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-17
+
+################################################
+#
+#2 リポストツイートタグ(RepostTweetTag)
+#
+################################################
+reposts.RepostTweetTag(rtt_g2_1):
+    tweet:                  twt_goro2
+    tag:                    tag_goro_red
+    contributor:            acnt_goro
+    repostedAt:             2012-07-18
+
+reposts.RepostTweetTag(rtt_g2_2):
+    tweet:                  twt_goro2
+    tag:                    tag_goro_hello
+    contributor:            acnt_goro
+    repostedAt:             2012-07-19
+
+reposts.RepostTweetTag(rtt_g3_1):
+    tweet:                  twt_goro3
+    tag:                    tag_goro_blue
+    contributor:            acnt_goro
+    repostedAt:             2012-07-20
+
+reposts.RepostTweetTag(rtt_g3_2):
+    tweet:                  twt_goro3
+    tag:                    tag_jiro_ohayo
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-21
+
+reposts.RepostTweetTag(rtt_g3_3):
+    tweet:                  twt_goro3
+    tag:                    tag_hanako_copper
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-22
+
+reposts.RepostTweetTag(rtt_g4_1):
+    tweet:                  twt_goro4
+    tag:                    tag_hanako_silver
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-23
+
+#-----------------------------------
+reposts.RepostTweetTag(rtt_j1_1):
+    tweet:                  twt_jiro1
+    tag:                    tag_goro_green
+    contributor:            acnt_goro
+    repostedAt:             2012-07-24
+
+reposts.RepostTweetTag(rtt_j3_1):
+    tweet:                  twt_jiro3
+    tag:                    tag_goro_green
+    contributor:            acnt_goro
+    repostedAt:             2012-07-25
+
+reposts.RepostTweetTag(rtt_j3_2):
+    tweet:                  twt_jiro3
+    tag:                    tag_goro_blue
+    contributor:            acnt_goro
+    repostedAt:             2012-07-26
+
+#-----------------------------------
+reposts.RepostTweetTag(rtt_h1_1):
+    tweet:                  twt_hanako1
+    tag:                    tag_goro_green
+    contributor:            acnt_goro
+    repostedAt:             2012-07-27
+
+reposts.RepostTweetTag(rtt_h2_1):
+    tweet:                  twt_hanako2
+    tag:                    tag_goro_green
+    contributor:            acnt_goro
+    repostedAt:             2012-07-28
+
+reposts.RepostTweetTag(rtt_h3_1):
+    tweet:                  twt_hanako3
+    tag:                    tag_jiro_hello
+    contributor:            acnt_jiro
+    repostedAt:             2012-07-29
+
+reposts.RepostTweetTag(rtt_h3_2):
+    tweet:                  twt_hanako3
+    tag:                    tag_hanako_money
+    contributor:            acnt_hanako
+    repostedAt:             2012-07-30
+
+reposts.RepostTweetTag(rtt_h4_1):
+    tweet:                  twt_hanako4
+    tag:                    tag_goro_red
+    contributor:            acnt_goro
+    repostedAt:             2012-07-31
+
+reposts.RepostTweetTag(rtt_h5_1):
+    tweet:                  twt_hanako5
+    tag:                    tag_goro_gold
+    contributor:            acnt_goro
+    repostedAt:             2012-08-01
+
+reposts.RepostTweetTag(rtt_h5_2):
+    tweet:                  twt_hanako5
+    tag:                    tag_hanako_gold
+    contributor:            acnt_hanako
+    repostedAt:             2012-08-02
+
+
+################################################
+#
+#2 リポスト(Repost)
+#
+################################################
+#reposts.Repost(rep1):
+#-----------------------------------
+

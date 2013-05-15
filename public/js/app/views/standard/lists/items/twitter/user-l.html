@@ -1,0 +1,100 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(item/user)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(User)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header">
+		menu?
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+
+
+	<div ng-switch="isLoading">
+
+
+		<!-- BEGIN: Loading Sequence. -->
+		<div ng-switch-when="true">
+
+
+			Loading....
+
+
+		</div>
+		<!-- END: Loading Sequence. -->
+
+
+		<!-- BEGIN: View. -->
+		<div ng-switch-when="false">
+
+
+			<!--<h1>-->
+			<!--What Are You Looking For?-->
+			<!--</h1>-->
+
+			<p>
+				hogehoge!
+			</p>
+
+			<!-- List the categories. -->
+			<!--<ul ng-show="users.length">-->
+			<!--<li ng-repeat="user in users">-->
+			<!--<a href="#/hoge/{{ user.id }}">-->
+			<!--<span class="name">{{ user.name }}</span>-->
+			<!--<span class="description">{{ user.description }}</span>-->
+			<!--</a>-->
+			<!--</li>-->
+			<!--</ul>-->
+			<div ng-show="users.length">
+				<div ng-repeat="user in users"
+					ng-controller="item.twitter.UserUnitCtrl"
+					ng-include="consts.templatePath.items.user.unit"
+					ng-init="scopeName = 'unit (in units)'"></div>
+			</div>
+
+			<!--ng-controller="item.twitter.UserUnitCtrl"-->
+			<!--ng-include="consts.templatePath.items.user"-->
+		</div>
+		<!-- END: View. -->
+
+
+	</div>
+
+	<!--<ul ng-show="units.length">-->
+	<!--<li ng-repeat="unit in units"-->
+	<!--ng-controller="controllerName"-->
+	<!--ng-include="templatePath"-->
+	<!--ng-init="init(); scopeName = 'unit (in units)'"></li>-->
+	<!--</ul>-->
+	<!-- ----------------- -->
+	<!--<p ng-hide="units.length">Loading now...</p>-->
+	<!-- /UnitList Body -->
+	<!-- ---------------------------------------- -->
+
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->
+
+
+<!--<script type="text/ng-template" id="userTmpl">-->
+<!-- ---------------------------------------- -->
+<!-- Unit -->
+<!--<a href="#/hoge/{{ user.id }}">-->
+<!--<span class="name">{{ user.name }}</span>-->
+<!--<span class="description">{{ user.description }}</span>-->
+<!--</a>-->
+<!-- /Unit -->
+<!-- ---------------------------------------- -->
+<!--</script>-->

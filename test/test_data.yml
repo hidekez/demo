@@ -1,0 +1,1336 @@
+#******************************************************
+# Test Data
+# 作成日:2011/10/20
+# 修正日:2012/03/07 カテゴリー関連追加
+# 修正日:2012/04/10 構造変更後
+# 修正日:2012/06/10 構造変更後
+# 修正日:2012/06/14 WordLanguage->Locale,他に追加など
+# 修正日:2012/07/08 Localeで不具合があり使用しなくなっているため、削除
+#******************************************************
+
+#******************************************************
+#
+#1 辞書関連
+#
+#******************************************************
+################################################
+#2 単語(Word)
+################################################
+#=======================================
+#3 単語
+#=======================================
+#categories.Word(wd_dog):
+#    letter:
+#                            dog
+#    reading:
+#                            dog
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_dogs):
+#    letter:
+#                            dogs
+#    reading:
+#                            dogs
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#                            TRUE
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ドッグ):
+#    letter:
+#                            ドッグ
+#    reading:
+#                            ドッグ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#                            TRUE
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ドッグス):
+#    letter:
+#                            ドッグス
+#    reading:
+#                            ドッグス
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#                            TRUE
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#                            TRUE
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_犬):
+#    letter:
+#                            犬
+#    reading:
+#                            イヌ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_いぬ):
+#    letter:
+#                            いぬ
+#    reading:
+#                            イヌ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_イヌ):
+#    letter:
+#                            イヌ
+#    reading:
+#                            イヌ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_cat):
+#    letter:
+#                            cat
+#    reading:
+#                            cat
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_cats):
+#    letter:
+#                            cats
+#    reading:
+#                            cats
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#                            TRUE
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_キャット):
+#    letter:
+#                            キャット
+#    reading:
+#                            キャット
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#                            TRUE
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_猫):
+#    letter:
+#                            猫
+#    reading:
+#                            ネコ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ねこ):
+#    letter:
+#                            ねこ
+#    reading:
+#                            ネコ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ネコ):
+#    letter:
+#                            ネコ
+#    reading:
+#                            ネコ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ぬこ):
+#    letter:
+#                            ぬこ
+#    reading:
+#                            ヌコ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#                            TRUE
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_hot):
+#    letter:
+#                            hot
+#    reading:
+#                            hot
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_hotdog):
+#    letter:
+#                            hotdog
+#    reading:
+#                            hotdog
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#                            TRUE
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_HotDog):
+#    letter:
+#                            HotDog
+#    reading:
+#                            hotdog
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#                            TRUE
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#                            TRUE
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_iPhone):
+#    letter:
+#                            iPhone
+#    reading:
+#                            iphone
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#                            TRUE
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_play):
+#    letter:
+#                            play
+#    reading:
+#                            play
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#                            FALSE
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_player):
+#    letter:
+#                            player
+#    reading:
+#                            player
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#                            FALSE
+#    isEndFormFlag:
+#    isPluralFlag:
+#                            TRUE
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_root):
+#    letter:
+#                            root
+#    reading:
+#                            root
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_ルート):
+#    letter:
+#                            ルート
+#    reading:
+#                            ルート
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    isDesignedFlag:
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#    isClippingFlag:
+#    isLoanWordFlag:
+#                            TRUE
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_mailman):
+#    letter:
+#                            mailman
+#    reading:
+#                            mailman
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#                            FALSE
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#                            TRUE
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+#categories.Word(wd_postman):
+#    letter:
+#                            postman
+#    reading:
+#                            postman
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    isDictionaryFlag:
+#                            TRUE
+#    isDesignedFlag:
+#                            FALSE
+#    isEndFormFlag:
+#    isPluralFlag:
+#    isCompoundFlag:
+#                            TRUE
+#    isClippingFlag:
+#    isLoanWordFlag:
+#    isSlangFlag:
+#    isTypoFlag:
+#    isMajorFlag:
+#    isWikipediaIndexFlag:
+#    hasYuragiFlag:
+#    hasSpaceFlag:
+#    numSearches:
+#    numCostNAIST:
+#    numCostUniDic:
+##-----------------------------------
+
+
+################################################
+#2 語彙素(Lexeme)
+################################################
+#=======================================
+#3 語彙素情報
+#=======================================
+#categories.LexemeSetup(lxset1):
+#    isCompoundFlag:
+#                            true
+#    isClippingFlag:
+#                            
+#    hasSpaceFlag:
+#                            
+#-----------------------------------
+
+
+#=======================================
+#3 語彙素
+#=======================================
+#categories.Lexeme(lx_dog):
+#    words:
+#                            - wd_dog
+#                            - wd_dogs
+#    lemma:
+#                            wd_dog
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_ドッグ):
+#    words:
+#                            - wd_ドッグ
+#                            - wd_ドッグス
+#    lemma:
+#                            wd_ドッグ
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_犬):
+#    words:
+#                            - wd_犬
+#                            - wd_いぬ
+#                            - wd_イヌ
+#    lemma:
+#                            wd_犬
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_cat):
+#    words:
+#                            - wd_cat
+#                            - wd_cats
+#    lemma:
+#                            wd_cat
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_キャット):
+#    words:
+#                            - wd_キャット
+#    lemma:
+#                            wd_キャット
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_猫):
+#    words:
+#                            - wd_猫
+#                            - wd_ねこ
+#                            - wd_ネコ
+#    lemma:
+#                            wd_猫
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_ぬこ):
+#    words:
+#                            - wd_ぬこ
+#    lemma:
+#                            wd_ぬこ
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_hot):
+#    words:
+#                            - wd_hot
+#    lemma:
+#                            wd_hot
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+##hotdog
+#categories.Lexeme(lx_hotdog):
+#    words:
+#                            - wd_hotdog
+#    lemma:
+#                            wd_hotdog
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+##play
+#categories.Lexeme(lx_play):
+#    words:
+#                            - wd_play
+#    lemma:
+#                            wd_play
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_player):
+#    words:
+#                            - wd_player
+#    lemma:
+#                            wd_player
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_root):
+#    words:
+#                            - wd_root
+#    lemma:
+#                            wd_root
+#    locale:
+#                            en
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#categories.Lexeme(lx_ルート):
+#    words:
+#                            - wd_ルート
+#    lemma:
+#                            wd_ルート
+#    locale:
+#                            ja
+#    pos:
+#                            NOUN
+#    wordsSize:
+#                            
+#    numEntries:
+#                            
+##-----------------------------------
+#
+#
+#
+##=======================================
+## 合成語
+##=======================================
+##CompoundLink(cm1):
+##    owner:
+##                            lx_hotdog
+##    component:
+##                            lx_dog
+##-----------------------------------
+##CompoundLink(cm2):
+##    owner:
+##                            lx_hotdog
+##    component:
+##                            lx_hot
+##-----------------------------------
+##=======================================
+## 派生語
+##=======================================
+##DerivativeLink(dv1):
+##    owner:
+##                            lx_play
+##    derivative:
+##                            lx_player
+#
+#
+##=======================================
+##3 語彙素リンク
+##=======================================
+#categories.LexemeLink(lxlnk1):
+#    owner:
+#                            lx_hotdog
+#    member:
+#                            lx_dog
+#    linkType:
+#                            COMPONENT
+##-----------------------------------
+#categories.LexemeLink(lxlnk2):
+#    owner:
+#                            lx_hotdog
+#    member:
+#                            lx_hot
+#    linkType:
+#                            COMPONENT
+##-----------------------------------
+#categories.LexemeLink(lxlnk3):
+#    owner:
+#                            lx_play
+#    member:
+#                            lx_player
+#    linkType:
+#                            DERIVATIVE
+#
+#
+#################################################
+##2 概念(Term)
+#################################################
+##=======================================
+##3 辞書参照元情報
+##=======================================
+#categories.SourceInfo(src1):
+#    name:
+#                            日本語WordNet
+##-----------------------------------
+#
+#
+##=======================================
+##3 意味
+##=======================================
+#categories.Sense(sn1):
+#    senseType:
+#                            SENSE
+#    text:
+#                            hello world
+#    locale:
+#                            en
+#    sourceInfo:
+#                            src1
+##-----------------------------------
+#categories.Sense(sn2):
+#    senseType:
+#                            EXAMPLE
+#    text:
+#                            hello world
+#    locale:
+#                            en
+#    sourceInfo:
+#                            src1
+##-----------------------------------
+#
+#
+##=======================================
+##3 概念
+##=======================================
+##犬
+#categories.Term(tm_犬):
+#    lexemes:
+#                            - lx_犬
+#                            - lx_dog
+#                            - lx_ドッグ
+#    senses:
+#                            - sn1
+#                            - sn2
+##-----------------------------------
+##猫
+#categories.Term(tm_猫):
+#    lexemes:
+#                            - lx_猫
+#                            - lx_cat
+#                            - lx_キャット
+#    senses:
+#                            - sn1
+#                            - sn2
+##-----------------------------------
+##ぬこ
+#categories.Term(tm_ぬこ):
+#    lexemes:
+#                            - lx_ぬこ
+#    senses:
+#
+##-----------------------------------
+##ルート
+#categories.Term(tm_root):
+#    lexemes:
+#                            - lx_root
+#                            - lx_ルート
+#    senses:
+#
+#
+##=======================================
+##3 シソーラス
+##=======================================
+##猫とぬこ、俗語
+#categories.TermLink(tmlnk1):
+#    owner:
+#                            tm_猫
+#    member:
+#                            tm_ぬこ
+#    termLinkType:
+#                            SIFM
+#
+#
+#################################################
+##2 カテゴリー(分類)
+#################################################
+##=======================================
+##3 カテゴリーラベル
+##=======================================
+##犬
+#categories.CategoryLabel(cl_dg):
+#    locale:                 ja
+#    terms:
+#                            - tm_犬
+#    CategoryOperator:
+##-----------------------------------
+##猫
+#categories.CategoryLabel(cl_ct):
+#    locale:                 ja
+#    terms:
+#                            - tm_猫
+#    CategoryOperator:
+##-----------------------------------
+##犬と猫
+#categories.CategoryLabel(cl_dgct):
+#    locale:                 ja
+#    terms:
+#                            - tm_犬
+#                            - tm_猫
+#    CategoryOperator:
+#                            GROUP
+##-----------------------------------
+##ルート
+#categories.CategoryLabel(cl_rt):
+#    terms:
+#                            - tm_root
+#    CategoryOperator:
+#
+##=======================================
+##3 カテゴリー内容
+##=======================================
+##犬
+#categories.CategoryContent(ccnt_dg):
+#    terms:
+#                            - tm_犬
+#    words:
+#                            - wd_dog
+#                            - wd_dogs
+#                            - wd_ドッグ
+#                            - wd_ドッグス
+#                            - wd_犬
+#                            - wd_いぬ
+##    locale:
+##                            ja
+##    name:
+##                            wd_犬
+##    labels:
+##                            ? key1
+##                            : Japanese
+##                            ? key2
+##                            : cl_dg
+#    label:
+#                            犬
+#    labelLexemes:
+#                            - lx_犬
+#    labelType:
+#                            
+#    isDependentFlag:
+#                            false
+#    isAbstractFlag:
+#                            false
+#    isSpecialFlag:
+#                            true
+#    isCommonFlag:
+#                            false
+##   numEntries:
+##-----------------------------------
+##猫
+#categories.CategoryContent(ccnt_ct):
+#    terms:
+#                            - tm_猫
+#    words:
+#                            - wd_cat
+#                            - wd_キャット
+#                            - wd_猫
+#                            - wd_ねこ
+##    locale:
+##                            ja
+##    name:
+##                            wd_猫
+##    labels:
+##                            ? key1
+##                            : Japanese
+##                            ? key2
+##                            : cl_dg
+#    label:
+#                            猫
+#    labelLexemes:
+#                            - lx_猫
+#    labelType:
+#                            
+#    isDependentFlag:
+#                            false
+#    isAbstractFlag:
+#                            false
+#    isSpecialFlag:
+#                            true
+#    isCommonFlag:
+#                            false
+##   numEntries:
+#
+##-----------------------------------
+##犬と猫
+#categories.CategoryContent(ccnt_dgct):
+#    terms:
+#                            - tm_犬
+#                            - tm_猫
+#    words:
+#                            - wd_dog
+#                            - wd_dogs
+#                            - wd_ドッグ
+#                            - wd_ドッグス
+#                            - wd_犬
+#                            - wd_いぬ
+#                            - wd_イヌ
+#                            - wd_cat
+#                            - wd_キャット
+#                            - wd_猫
+#                            - wd_ねこ
+#                            - wd_ネコ
+##    locale:
+##                            ja
+##    name:
+##                            wd_猫
+##    labels:
+##                            ? key1
+##                            : Japanese
+##                            ? key2
+##                            : cl_dgct
+#    label:
+#                            犬・猫
+#    labelLexemes:
+#                            - lx_犬
+#                            - lx_猫
+#    labelType:
+#                            GROUP
+#    isDependentFlag:
+#                            false
+#    isAbstractFlag:
+#                            false
+#    isSpecialFlag:
+#                            true
+#    isCommonFlag:
+#                            false
+##   numEntries:
+#
+##-----------------------------------
+##ルート
+#categories.CategoryContent(ccnt_rt):
+#    terms:
+#                            - tm_root
+#    words:
+#                            - wd_root
+#                            - wd_ルート
+##    locale:
+##                            ja
+##    name:
+##                            wd_ルート
+##    labels:
+##                            ? key1
+##                            : Japanese
+##                            ? key2
+##                            : cl_rt
+#    label:
+#                            ルート
+#    labelLexemes:
+#                            - lx_ルート
+#    labelType:
+#                            
+#    isDependentFlag:
+#                            true
+#    isAbstractFlag:
+#                            true
+#    isSpecialFlag:
+#                            true
+#    isCommonFlag:
+#                            false
+##   numEntries:
+#
+#
+##=======================================
+##3 カテゴリー
+##=======================================
+##犬
+#categories.Category(ct_dg):
+#    code:
+#                            c00001
+#    content:
+#                            ccnt_dg
+##   level:
+#    hasSubsFlag:
+#                            false
+#    numItems:
+#    cntViews:
+##-----------------------------------
+##猫
+#categories.Category(ct_ct):
+#    code:
+#                            c00002
+#    content:
+#                            ccnt_ct
+##   level:
+#    hasSubsFlag:
+#                            false
+#    numItems:
+#    cntViews:
+##-----------------------------------
+##犬と猫
+#categories.Category(ct_dgct):
+#    code:
+#                            c00012
+#    content:
+#                            ccnt_dgct
+##   level:
+#    hasSubsFlag:
+#                            true
+#    numItems:
+#    cntViews:
+##-----------------------------------
+##ルート
+#categories.Category(ct_rt):
+#    code:
+#                            c00000
+#    content:
+#                            ccnt_rt
+##   level:
+#    hasSubsFlag:
+#                            true
+#    numItems:
+#    cntViews:
+##-----------------------------------
+#
+#
+##=======================================
+##3 カテゴリーリンク
+##=======================================
+#categories.CategoryLink(clnk_rt_dgct):
+#    owner:
+#                            ct_rt
+#    member:
+#                            ct_dgct
+#    linkType:
+#                            CHILD
+##-----------------------------------
+#categories.CategoryLink(clnk_dgct_dg):
+#    owner:
+#                            ct_dgct
+#    member:
+#                            ct_dg
+#    linkType:
+#                            CHILD
+##-----------------------------------
+#categories.CategoryLink(clnk_dgct_ct):
+#    owner:
+#                            ct_dgct
+#    member:
+#                            ct_ct
+#    linkType:
+#                            CHILD
+##-----------------------------------
+#categories.CategoryLink(clnk_dg_dgct):
+#    owner:
+#                            ct_dg
+#    member:
+#                            ct_dgct
+#    linkType:
+#                            PARENT
+##-----------------------------------
+#categories.CategoryLink(clnk_ct_dgct):
+#    owner:
+#                            ct_dg
+#    member:
+#                            ct_dgct
+#    linkType:
+#                            PARENT
+##-----------------------------------
+#categories.CategoryLink(clnk_dgct_rt):
+#    owner:
+#                            ct_rt
+#    member:
+#                            ct_dgct
+#    linkType:
+#                            PARENT
+#-----------------------------------
+
+

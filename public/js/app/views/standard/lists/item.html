@@ -1,0 +1,30 @@
+<div ng-init="scopeName = 'insideUnitList(item)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		{{$id}} - {{scopeName}} - {{getActiveFaceName()}}
+	</p>
+
+	<div ng-switch="isLogin()">
+		<div ng-switch-when="false">You need to login.</div>
+		<div ng-switch-when="true">
+			<div ng-show="'tweet' == getActiveFaceName()"
+				 ng-include="consts.templatePath.items.tweet.list"
+				 ng-controller="item.twitter.TweetListCtrl"
+				 ng-init="initTweetList()"
+				 class="border-purple"
+					></div>
+			<div ng-show="'user' == getActiveFaceName()"
+				 ng-include="consts.templatePath.items.user.list"
+				 ng-controller="item.twitter.UserListCtrl"
+				 ng-init="initUserList()"
+				 class="border-purple"
+					></div>
+			<div ng-show="'list' == getActiveFaceName()"
+				 ng-include="consts.templatePath.items.list.list"
+				 ng-controller="item.twitter.ListListCtrl"
+				 ng-init="initListList()"
+				 class="border-purple"
+					></div>
+		</div>
+	</div>
+</div>

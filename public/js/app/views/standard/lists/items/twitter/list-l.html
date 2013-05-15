@@ -1,0 +1,56 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(item/list)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(List)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header">
+		menu?
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+	<div ng-switch="isLoading">
+
+		<!-- BEGIN: Loading Sequence. -->
+		<div ng-switch-when="true">
+
+			Loading....
+
+		</div>
+		<!-- END: Loading Sequence. -->
+
+
+		<!-- BEGIN: View. -->
+		<div ng-switch-when="false">
+
+			<p>
+				hogehoge!
+			</p>
+
+			<ul ng-show="lists.length">
+				<li ng-repeat="list in lists"
+					ng-controller="item.twitter.ListUnitCtrl"
+					ng-include="consts.templatePath.items.list.unit"
+					ng-init="scopeName = 'unit (in units)'"></li>
+			</ul>
+
+		</div>
+		<!-- END: View. -->
+
+	</div>
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->
+
+

@@ -1,0 +1,53 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(item/category)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(Category)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header">
+		menu?
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+	<div ng-switch="isLoading">
+
+		<!-- BEGIN: Loading Sequence. -->
+		<div ng-switch-when="true">
+
+			Loading....
+
+		</div>
+		<!-- END: Loading Sequence. -->
+
+		<!-- BEGIN: View. -->
+		<div ng-switch-when="false">
+			<ul ng-show="categories.length"
+				class="media-list">
+				<li ng-repeat="category in categories"
+					ng-controller="label.CategoryUnitCtrl"
+					ng-include="consts.templatePath.labels.category.unit"
+					ng-init="scopeName = 'unit (in units)'"
+					class="media category"
+					id="{{category.id}}"
+					></li>
+			</ul>
+		</div>
+		<!-- END: View. -->
+
+	</div>
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->
+
+

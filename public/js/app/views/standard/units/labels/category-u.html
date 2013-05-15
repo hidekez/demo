@@ -1,0 +1,21 @@
+<!-- ---------------------------------------- -->
+<!-- Unit -->
+<div class="media-body category-body btn btn-large " ng-click="alert('hoge')">
+	<!--<a href="#{{$parent.fullPath}}/{{ category.serialCode }}">-->
+		{{ category.displayName }}
+	<!--</a>-->
+	<span class="btn disabled label-fav"
+		  ng-click="favoriteCategory($event, category)"
+		  ng-show="isLogin()">
+		<span ng-switch="category.favorite">
+			<span ng-switch-when="true">
+				★
+			</span>
+			<span ng-switch-default>
+				☆
+			</span>
+		</span>
+	</span>
+</div>
+<!-- /Unit -->
+<!-- ---------------------------------------- -->

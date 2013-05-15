@@ -1,0 +1,36 @@
+<!-- ---------------------------------------- -->
+<!-- UnitList -->
+<div ng-init="scopeName = 'insideUnitList(repost/fuga)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		UnitList(Fuga)
+		-- $scope.$id: [ {{$id}} ]
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Header -->
+	<header class="unitlist-header">
+		menu?
+	</header>
+	<!-- /UnitList Header -->
+	<!-- ---------------------------------------- -->
+	<!-- UnitList Body -->
+	<!--
+		[Notes]
+		templatePath = XXXCtrl.templatePath = unit.html
+	-->
+	<ul ng-show="units.length">
+		<li ng-repeat="unit in units"
+			ng-controller="controllerName"
+			ng-include="templatePath"
+			ng-init="init(); scopeName = 'unit (in units)'"></li>
+	</ul>
+	<!-- ----------------- -->
+	<p ng-hide="units.length">Loading now...</p>
+	<!-- /UnitList Body -->
+	<!-- ---------------------------------------- -->
+
+</div>
+<!-- /UnitList -->
+<!-- ---------------------------------------- -->

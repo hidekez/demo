@@ -1,0 +1,8 @@
+<ul class="nav" ng-switch="isLogin()" ng-show="doneEcho()">
+	<li class="active" ng-switch-when="false">
+		<a href="/login">Login with twitter</a>
+	</li>
+	<li class="active" ng-switch-when="true">
+		<a href="/logout">Logout</a>
+	</li>
+</ul>

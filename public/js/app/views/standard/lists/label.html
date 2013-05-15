@@ -1,0 +1,33 @@
+<div ng-init="scopeName = 'insideUnitList(label)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		{{$id}} - {{scopeName}} - {{getActiveFaceName()}}
+	</p>
+	<!--<div ng-show="'category' == getActiveFaceName()" ng-include="'category-tmpl.html'"></div>-->
+	<!--<div ng-show="'tag' == getActiveFaceName()" ng-include="'tag-tmpl.html'"></div>-->
+	<!--<div ng-show="'folder' == getActiveFaceName()" ng-include="'folder-tmpl.html'"></div>-->
+	<div ng-show="'category' == getActiveFaceName()"
+		 ng-include="consts.templatePath.labels.category.list"
+		 ng-controller="label.CategoryListCtrl"
+		 ng-init="initCategoryList()"
+		 class="border-purple"
+			></div>
+	<div ng-switch="isLogin()"
+		 ng-show="'category' != getActiveFaceName()">
+		<div ng-switch-when="false">You need to login.</div>
+		<div ng-switch-when="true">
+			<div ng-show="'tag' == getActiveFaceName()"
+				 ng-include="consts.templatePath.labels.tag.list"
+				 ng-controller="label.TagListCtrl"
+				 ng-init="initTagList()"
+				 class="border-purple"
+					></div>
+			<div ng-show="'folder' == getActiveFaceName()"
+				 ng-include="consts.templatePath.labels.folder.list"
+				 ng-controller="label.FolderListCtrl"
+				 ng-init="initFolderList()"
+				 class="border-purple"
+					></div>
+		</div>
+	</div>
+</div>

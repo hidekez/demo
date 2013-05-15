@@ -1,0 +1,25 @@
+<!-- ---------------------------------------- -->
+<!-- Standard -->
+<div ng-init="scopeName = 'insideStandard'">
+
+	<p  ng-show="showDebugPrintOnView()">
+		layouts.standard
+		$scope.$id: [ {{$id}} ]
+		-- <span class="font-blue">subview: [ {{subview}} ]</span>
+		-- <span class="font-green">columnId: [ {{$routeParams.columnId}} ]</span>
+		-- <span class="font-purple">$location: [ {{$location.path()}} ]</span>
+	</p>
+	<!--templatePath:{{consts.templatePath.column}}-->
+	<!--templatePath-->
+	<div class="row-fluid"><!-- ng-controller="standard.ColumnListCtrl" -->
+		<section class="span4 border-blue column"
+				 ng-repeat="col in mainTree.cols"
+				 ng-controller="standard.ColumnCtrl"
+				 ng-include="consts.templatePath.column"
+				 ng-init="initColumn(); faces = col.faces; scopeName = 'col(in cols)'"
+				></section>
+	</div>
+
+</div>
+<!-- /Standard -->
+<!-- ---------------------------------------- -->

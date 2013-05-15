@@ -1,0 +1,25 @@
+<div ng-init="scopeName = 'insideUnitList(repost)'">
+
+	<p ng-show="showDebugPrintOnView()">
+		{{$id}} - {{scopeName}} - {{getActiveFaceName()}}
+	</p>
+<!--<div ng-show="'hoge' == getActiveFaceName()" ng-include="'hoge-tmpl.html'"></div>-->
+<!--<div ng-show="'piyo' == getActiveFaceName()" ng-include="'piyo-tmpl.html'"></div>-->
+<!--<div ng-show="'fuga' == getActiveFaceName()" ng-include="'fuga-tmpl.html'"></div>-->
+	<div ng-show="'hoge' == getActiveFaceName()"
+		 ng-include="consts.templatePath.reposts.hoge.list"
+		 ng-controller="repost.HogeListCtrl"
+		 class="border-purple"
+			></div>
+	<div ng-show="'piyo' == getActiveFaceName()"
+		 ng-include="consts.templatePath.reposts.piyo.list"
+		 ng-controller="repost.PiyoListCtrl"
+		 class="border-purple"
+			></div>
+	<div ng-show="'fuga' == getActiveFaceName()"
+		 ng-include="consts.templatePath.reposts.fuga.list"
+		 ng-controller="repost.FugaListCtrl"
+		 class="border-purple"
+			></div>
+
+</div>

@@ -1,0 +1,227 @@
+<!-- ---------------------------------------- -->
+<!-- Line -->
+<div ng-init="scopeName = 'insideLine'">
+
+	<p ng-show="showDebugPrintOnView()">
+		Line
+		-- <span>$scope.$id: [ {{$id}} ]</span>
+		-- <span class="font-blue">subview: [ {{subview}} ]</span>
+		-- <span class="font-green">LineId: [ {{$routeParams.lineId}} ]</span>
+		-- <span class="font-brown">isOnRoute: [ {{isOnRoute}} ]</span>
+	</p>
+
+	<!-- ---------------------------------------- -->
+	<!-- Line Header -->
+
+	<header class="line-header btn-group"
+			style="width:100%;margin-left:0px;margin-right:0px"
+			ng-show="showLineHeader()"
+			>
+
+		<button class="btn btn-primary"
+				style="width:20%;"
+				type="button"
+				btn-radio="'{{line.name}}'"
+				ng-repeat="line in lines"
+				ng-model="line"
+				ng-class="{active: isActive(line)}"
+				ng-init="setLine(line);scopeName = 'line-header/line(in lines)';"
+				ng-click="activateLine(line)"
+				ng-show="checkLogin(line)"
+				>
+			{{line.name}}
+		</button>
+	</header>
+
+	<!-- /Line Header -->
+	<!-- ---------------------------------------- -->
+	<!-- Line Body == UnitList -->
+	<!--
+		[Notes]
+		unitListCtrl = LineCtrl.unitListCtrl
+		templatePath = XxxListCtrl.templatePath = xxx-l.html
+	-->
+	<p  ng-show="showDebugPrintOnView()">
+		<!--{{getUnitListCtrl()}}-->
+		<!-- - {{getUnitListTmpl()}}-->
+		[ {{getColumnName()}} - {{getActiveFaceName()}} ]
+	</p>
+
+	<div ng-switch="getColumnName()">
+		<div ng-switch-when="item"
+			 ng-include="consts.templatePath.list.item"
+			 class="border-yellow"
+				></div>
+		<!--ng-controller="ItemListCtrl"-->
+		<div ng-switch-when="label"
+			 ng-include="consts.templatePath.list.label"
+			 class="border-yellow"
+				></div>
+		<!--ng-controller="LabelListCtrl"-->
+		<div ng-switch-when="repost"
+			 ng-include="consts.templatePath.list.repost"
+			 class="border-yellow"
+				></div>
+		<!--ng-controller="RepostListCtrl"-->
+	</div>
+	<!-- /Line Body == UnitList -->
+	<!-- ---------------------------------------- -->
+
+</div>
+<!-- /Line -->
+<!-- ---------------------------------------- -->
+
+<!-- この書き方だと解決されない -->
+<!--ng-include="getItemTmpl()"-->
+<!--ng-include="getLabelTmpl()"-->
+<!--ng-include="getRepostTmpl()"-->
+
+<!--
+
+
+
+
+-->
+
+
+<!--
+<div ng-include="getUnitListTmpl()" ng-init="scopeName = 'test'">
+</div>
+
+<section class="unit border-purple"
+		 ng-include="templatePath"
+		 ng-init="initUnitList(); scopeName = 'Unit-body/unit'"
+		></section>
+-->
+<!--
+directiveの作りかけ
+column="getColumnName()"
+-->
+<!--<unit-list-view column="'item'" act="{{sayHi()}}">unitListView here</unit-list-view>-->
+<!--<unit- list-view column="'item'" get-col-name="getColumnName()">unitListView here</unit-list-view>-->
+
+<!--<div ng-click="sayHi()">Click me!</div>-->
+
+
+<!--
+このやり方で問題解決できなかったのは、
+"'getUnitListTmpl('item')"
+など
+ -->
+<!--<div ng-switch="getColumnName()">-->
+<!--<div ng-switch-when="item" ng-include="'getUnitListTmpl('item')" ng-controller="ItemListCtrl"></div>-->
+<!--<div ng-switch-when="label" ng-include="{{getUnitListTmpl()}}" ng-controller="LabelListCtrl"></div>-->
+<!--<div ng-switch-when="repost" ng-include="{{getUnitListTmpl()}}" ng-controller="RepostListCtrl"></div>-->
+<!--</div>-->
+
+
+<!--
+べた書き、スコープは固定できたバージョン
+<div ng-switch="getColumnName()">
+	<div ng-switch-when="item" ng-include="'item-temp-tmpl.html'"></div>
+	<div ng-switch-when="label" ng-include="'label-temp-tmpl.html'"></div>
+	<div ng-switch-when="repost" ng-include="'repost-temp-tmpl.html'"></div>
+</div>
+
+<script type="text/ng-template" id="item-temp-tmpl.html">
+	{{$id}}
+	<div ng-show="'tweet' == activeFaceName()" ng-include="'tweet-temp-tmpl.html'"></div>
+	<div ng-show="'user' == activeFaceName()" ng-include="'user-temp-tmpl.html'"></div>
+	<div ng-show="'list' == activeFaceName()" ng-include="'list-temp-tmpl.html'"></div>
+</script>
+
+<script type="text/ng-template" id="label-temp-tmpl.html">
+	{{$id}}
+	<div ng-show="'category' == activeFaceName()" ng-include="'category-temp-tmpl.html'"></div>
+	<div ng-show="'tag' == activeFaceName()" ng-include="'tag-temp-tmpl.html'"></div>
+	<div ng-show="'folder' == activeFaceName()" ng-include="'folder-temp-tmpl.html'"></div>
+</script>
+
+<script type="text/ng-template" id="repost-temp-tmpl.html">
+	{{$id}}
+	<div ng-show="'hoge' == activeFaceName()" ng-include="'hoge-temp-tmpl.html'"></div>
+	<div ng-show="'piyo' == activeFaceName()" ng-include="'piyo-temp-tmpl.html'"></div>
+	<div ng-show="'fuga' == activeFaceName()" ng-include="'fuga-temp-tmpl.html'"></div>
+</script>
+
+<script type="text/ng-template" id="tweet-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="user-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="list-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="category-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="tag-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="folder-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="hoge-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="piyo-temp-tmpl.html">{{$id}}</script>
+<script type="text/ng-template" id="fuga-temp-tmpl.html">{{$id}}</script>
+-->
+<!--
+
+<div ng-switch="getColumnName()">
+	<div ng-switch-when="item">
+		<section class="unit border-purple"
+				 ng-show="'tweet' == activeFaceName()"
+				 ng-controller="item.twitter.TweetListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'user' == activeFaceName()"
+				 ng-controller="item.twitter.UserListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'list' == activeFaceName()"
+				 ng-controller="item.twitter.ListListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+	</div>
+	<div ng-switch-when="label">
+		<section class="unit border-purple"
+				 ng-show="'category' == activeFaceName()"
+				 ng-controller="label.CategoryListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'tag' == activeFaceName()"
+				 ng-controller="label.TagListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'folder' == activeFaceName()"
+				 ng-controller="label.FolderListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+	</div>
+	<div ng-switch-when="repost">
+		<section class="unit border-purple"
+				 ng-show="'hoge' == activeFaceName()"
+				 ng-controller="repost.HogeListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'piyo' == activeFaceName()"
+				 ng-controller="repost.PiyoListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+
+		<section class="unit border-purple"
+				 ng-show="'fuga' == activeFaceName()"
+				 ng-controller="repost.FugaListCtrl"
+				 ng-include="getUnitListTmpl()"
+				 ng-init="init(); scopeName = 'Unit-body/unit'"
+				></section>
+	</div>
+</div>
+-->

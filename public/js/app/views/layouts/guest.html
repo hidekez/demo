@@ -1,0 +1,22 @@
+<div ng-controller="layouts.GuestCtrl" class="l-guest">
+
+	<!-- BEGIN: Layout Container. -->
+	<div class="l-container">
+		<!-- BEGIN: Layout Header. -->
+		<div class="l-header">
+			<span class="title">
+                Welcome
+			</span>
+		</div>
+		<!-- END: Layout Header. -->
+
+		<!-- Include Body Content. -->
+		<div ng-switch="subview" class="l-body">
+			<div ng-switch-when="welcome" ng-include="welcomeTemplate"></div>
+		</div>
+	</div>
+	<!-- END: Layout Container. -->
+
+	<!-- BEGIN: Layout Footer. -->
+	<!-- END: Layout Footer. -->
+</div>
